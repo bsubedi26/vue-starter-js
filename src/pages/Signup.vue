@@ -1,0 +1,101 @@
+<template>
+  <div class="signup">
+      
+    <b-alert variant="danger" show v-if="formError">
+      {{ formError }}
+    </b-alert>
+  
+    <!--<div class="row">
+        <div class="col-12 col-6-tablet push-3-tablet text-center heading jumbotron">
+          <h1 class="font-100">{{ jumbotronHeader }}</h1>
+        </div>
+      </div>-->
+  
+    <div class="card text-center">
+      <div class="card-header"></div>
+      <div class="card-block">
+        <h4 class="card-title"> {{ cardHeader }}</h4>
+
+        <form class="mx-auto" style="width: 768px;" @submit.prevent="handleSubmit(email, password)" novalidate>
+          <fieldset :class="{ 'has-danger': errors.has('email') }">
+            <input v-model="email" v-validate="{ rules: { required: true } }" :class="{'form-control-danger': errors.has('email') }" class="form-control" type="text" name="email" placeholder="Email"></input>
+          </fieldset>
+          <span v-show="errors.has('email')" class="text-danger">{{ errors.first('email') }}</span>
+          <hr />
+          <fieldset :class="{ 'has-danger': errors.has('password') }">
+            <input v-model="password" v-validate="{ rules: { required: true } }" :class="{'form-control-danger': errors.has('password') }" class="form-control" type="password" name="password" placeholder="Password"></input>
+          </fieldset>
+          <span v-show="errors.has('password')" class="text-danger">{{ errors.first('password') }}</span>
+            <hr />
+          <button :disabled="errors.any()" type="submit" class="btn btn-outline-primary btn-block">Submit</button>
+
+        </form>
+        <loader v-if="$isLoading('user/signup')" />
+      </div>
+      <div class="card-footer text-muted">
+        Already have an Account?
+        <router-link to="/login"><span class="text-primary">Login here.</span></router-link>
+      </div>
+    </div>
+  
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: 'signup',
+  data() {
+    return {
+      anyLoading: false,
+      jumbotronHeader: 'Account Signup',
+      cardHeader: 'Signup Below',
+      email: '',
+      password: '',
+      formError: null
+    }
+  },
+  methods: {
+    handleSubmit(email, password) {
+      this.$startLoading('user/signup')
+      this.$store.dispatch("signup", {
+        email: this.email,
+        password: this.password
+      })
+      .then(() => {
+        this.$endLoading('user/signup')
+        this.$router.push("/")
+      })
+      .catch((error) => {
+        this.$endLoading('user/signup')
+        this.formError = error
+      })
+    }
+  },
+  mounted() {
+
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1,
+h2 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+a {
+  color: #42b983;
+}
+</style>
