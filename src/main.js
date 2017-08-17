@@ -5,11 +5,8 @@ import router from './router'
 import store from './store'
 import Navbar from './components/Navbar.vue';
 import Loader from './components/Loader.vue';
-
+import feathers from '@/config/feathers';
 // Vue.config.productionTip = false;
-
-// import Mint from 'mint-ui'
-// import 'mint-ui/lib/style.css'
 
 import BootstrapVue from 'bootstrap-vue';
 import 'bootstrap/dist/css/bootstrap.css'
@@ -20,10 +17,9 @@ Vue.component('navbar', Navbar);
 Vue.component('loader', Loader);
 
 // PLUGINS
-// Vue.use(Mint);
 Vue.use(BootstrapVue);
 Vue.use(VeeValidate);
-
+Vue.prototype.$feathers = feathers;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

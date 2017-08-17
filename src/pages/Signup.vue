@@ -1,3 +1,42 @@
+<script>
+export default {
+  name: 'signup',
+  data() {
+    return {
+      anyLoading: false,
+      jumbotronHeader: 'Account Signup',
+      cardHeader: 'Signup Below',
+      email: '',
+      password: '',
+      formError: null
+    }
+  },
+  methods: {
+    handleSubmit(email, password) {
+      this.$startLoading('user/signup')
+      // this.$store.dispatch("signup", {
+      this.$feathers.service('users').create({
+        email: this.email,
+        password: this.password
+      })
+      .then((doc) => {
+        console.log('.then ', doc)
+        this.$endLoading('user/signup')
+        this.$router.push("/")
+      })
+      .catch((error) => {
+        console.log('.catch ', error)
+        this.$endLoading('user/signup')
+        this.formError = error
+      })
+    }
+  },
+  mounted() {
+
+  }
+}
+</script>
+
 <template>
   <div class="signup">
       
@@ -40,43 +79,6 @@
   
   </div>
 </template>
-
-<script>
-
-export default {
-  name: 'signup',
-  data() {
-    return {
-      anyLoading: false,
-      jumbotronHeader: 'Account Signup',
-      cardHeader: 'Signup Below',
-      email: '',
-      password: '',
-      formError: null
-    }
-  },
-  methods: {
-    handleSubmit(email, password) {
-      this.$startLoading('user/signup')
-      this.$store.dispatch("signup", {
-        email: this.email,
-        password: this.password
-      })
-      .then(() => {
-        this.$endLoading('user/signup')
-        this.$router.push("/")
-      })
-      .catch((error) => {
-        this.$endLoading('user/signup')
-        this.formError = error
-      })
-    }
-  },
-  mounted() {
-
-  }
-}
-</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>

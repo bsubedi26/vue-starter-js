@@ -56,7 +56,9 @@ export default {
     handleSubmit(email, password) {
       this.$startLoading('user/login')
       console.log(email, password)
-      this.$store.dispatch("login", {
+      // this.$store.dispatch("login", {
+      this.$feathers.authenticate({
+        strategy: 'local',
         email: this.email,
         password: this.password
       })

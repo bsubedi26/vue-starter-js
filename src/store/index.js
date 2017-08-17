@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import user from './user'
-import VuexLoading from './plugins/loader';
+import user from './modules/user.module'
+import VuexLoading from './plugins/loader'
 
 Vue.use(Vuex)
 Vue.use(VuexLoading)
