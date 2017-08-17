@@ -1,6 +1,6 @@
-# vue-router
+# vue-starter
 
-> A Vue.js project
+> A minimal Vue.js project
 
 ## Build Setup
 
