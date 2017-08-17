@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '@/pages/Hello'
+import Home from '@/pages/Home'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
 
@@ -10,7 +10,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Hello
+      component: Home
     },
     {
       path: '/login',
