@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <navbar></navbar>  
-    <img src="./assets/logo.png">
+    <img width="100" height="100" src="./assets/logo.png">
     <router-view></router-view>
   </div>
 </template>
@@ -14,7 +14,7 @@ export default {
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  /*font-family: 'Avenir', Helvetica, Arial, sans-serif;*/
   text-align: center;
 }
 </style>

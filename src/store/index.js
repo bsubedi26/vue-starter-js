@@ -5,7 +5,6 @@ import { createVuexLoader } from 'vuex-loading'
 import user from './user'
 import product from './product'
 import plugins from './plugins'
-import * as rx from 'rxjs'
 
 const VuexLoading = createVuexLoader({
   // The Vuex module name, 'loading' by default.
@@ -15,7 +14,6 @@ const VuexLoading = createVuexLoader({
   // Vue component class name, 'v-loading' by default.
   className: 'v-loading',
 });
-
 
 Vue.use(Vuex)
 Vue.use(VuexLoading)

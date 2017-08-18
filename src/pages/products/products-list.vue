@@ -2,20 +2,25 @@
   <div class="d-flex flex-row flex-wrap justify-content-center">
     <toast :message="toastrMessage" :class="{ show: showToast }"/>
     
+    
     <div class="card col-4" v-for="product in products" :key="product.id">
-      <strong>{{product.id}}) {{product.name}}</strong>
+      <div class="row mx-auto">
+        <strong>{{product.id}}) {{product.name}}</strong> 
+        <b-badge class="m-1" variant="info">${{ product.price }}</b-badge>
+      </div>
       <img width="175" height="175" class="mx-auto mt-3" :src="product.src" />
   
       <p class="products-info-text mt-3">{{product.info}}</p>
   
-      <div class="row mx-auto">
+      <!--<div class="row mx-auto">
         <h5 class="col">Price: ${{product.price}}</h5>
         <input v-model="quantity" @input="handleQuantityInputChange(product)" :data-id="product.id" placeholder="Quantity" style="width:60%" class="col form-control mb-3" type="number"/>
+      </div>-->
+  
+      <div class="d-flex flex-column">
+      <button @click="addToCart(product)" class="btn btn-primary mb-3 cursor-pointer">Add to Cart</button>
+      <button @click="goToDetails(product)" class="btn btn-outline-success mb-3 cursor-pointer">Details</button>
       </div>
-  
-      <button @click="addToCart(product, quantity)" class="btn btn-primary mb-3">Add to Cart</button>
-      <button @click="goToDetails(product)" class="btn btn-outline-success mb-3">Details</button>
-  
     </div>
   
   </div>
@@ -29,7 +34,6 @@
     data() {
       return {
         msg: 'Products List',
-        quantity: undefined,
         showToast: false,
         toastrMessage: ''
 
@@ -43,9 +47,8 @@
 
       },
 
-      addToCart(product, quantity) {
-        const payload = { product, quantity }
-        this.$store.dispatch('addToCart', payload)
+      addToCart(product) {
+        this.$store.dispatch('addToCart', product)
           .then(response => {
             this.toastrMessage = response
             this.showToast = true
@@ -54,7 +57,7 @@
           })
       },
       goToDetails(product) {
-        this.$router.push(`/products/${product.id}`)
+        this.$router.push(`/products/details/${product.id}`)
       }
     },
     computed: {
@@ -68,6 +71,6 @@
 <style scoped>
 
   .products-info-text {
-    height: 200px;
+    min-height: 200px;
   }
 </style>

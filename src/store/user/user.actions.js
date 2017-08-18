@@ -5,10 +5,11 @@ const actions = {
       resolve();
     });
   },
-  logout({ commit }) {
+  logout({ commit, dispatch }) {
     // await helpers.delayTimeout(3000);
     return new Promise(resolve => {
       window.localStorage.removeItem("feathers-jwt");
+      dispatch('clearCart')
       commit('LOGOUT_SUCCESS');
       resolve();
     });
