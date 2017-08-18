@@ -1,23 +1,21 @@
 <template>
-  
-  <div class="home jumbotron">
-    Home page!
+  <div class="mx-auto products-container">
+    <products-list />
   </div>
-
 </template>
 
 <script>
 
 
 export default {
-  name: 'hello',
+  name: 'app-products',
   data() {
     return {
 
     }
   },
 
-  
+
   computed: {
 
   }
@@ -26,6 +24,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.products-container {
+  /*max-width: 992px;*/
+}
 h1,
 h2 {
   font-weight: normal;

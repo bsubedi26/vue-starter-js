@@ -19,3 +19,9 @@ npm run build --report
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
+## PROGRESS
+Done: Async Loader
+Done: persist authentication
+Done: Account Registration/Login Management
+TODO: Persist feathers service to vuex

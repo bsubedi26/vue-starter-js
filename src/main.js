@@ -5,7 +5,10 @@ import router from './router'
 import store from './store'
 import Navbar from './components/Navbar.vue';
 import Loader from './components/Loader.vue';
+import Toast from './components/Toast.vue';
+import ProductsList from './pages/products/products-list.vue';
 import feathers from '@/config/feathers';
+
 // Vue.config.productionTip = false;
 
 import BootstrapVue from 'bootstrap-vue';
@@ -15,11 +18,14 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 // GLOBAL COMPONENTS
 Vue.component('navbar', Navbar);
 Vue.component('loader', Loader);
+Vue.component('toast', Toast);
+Vue.component('products-list', ProductsList);
 
 // PLUGINS
 Vue.use(BootstrapVue);
 Vue.use(VeeValidate);
 Vue.prototype.$feathers = feathers;
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

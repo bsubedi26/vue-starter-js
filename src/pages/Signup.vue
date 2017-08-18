@@ -8,7 +8,7 @@ export default {
       cardHeader: 'Signup Below',
       email: '',
       password: '',
-      formError: null
+      serviceError: null
     }
   },
   methods: {
@@ -22,12 +22,12 @@ export default {
       .then((doc) => {
         console.log('.then ', doc)
         this.$endLoading('user/signup')
-        this.$router.push("/")
+        this.$router.push("/login")
       })
       .catch((error) => {
         console.log('.catch ', error)
         this.$endLoading('user/signup')
-        this.formError = error
+        this.serviceError = error
       })
     }
   },
@@ -40,8 +40,8 @@ export default {
 <template>
   <div class="signup">
       
-    <b-alert variant="danger" show v-if="formError">
-      {{ formError }}
+    <b-alert variant="danger" show v-if="serviceError">
+      {{ serviceError.message }}
     </b-alert>
   
     <!--<div class="row">

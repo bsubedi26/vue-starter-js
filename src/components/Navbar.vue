@@ -55,19 +55,22 @@
           { name: 'Home', path: '/' },
           { name: 'Login', path: '/login' },
           { name: 'Signup', path: '/signup' },
-        ]
+          { name: 'Products', path: '/products' },
+        ],
       }
     },
 
     computed: {
       isLoggedIn() {
+        // return (window.localStorage.getItem('feathers-jwt') !== null) ? true : false
         return this.$store.getters.isLoggedIn
       }
     },
 
     methods: {
       handleLogout() {
-        this.$store.dispatch('logout')
+        this.$feathers.logout()
+        this.$store.dispatch('logout').then(() =>this.$router.push('/login'))
       }
     }
   }

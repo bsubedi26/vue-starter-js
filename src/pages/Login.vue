@@ -1,13 +1,9 @@
 <template>
 
   <div class="login">
-
-    <!--<div class="row">
-      <div class="col-12 col-6-tablet push-3-tablet text-center heading jumbotron">
-        <h1 class="font-100">{{ jumbotronHeader }}</h1>
-      </div>
-    </div>-->
-    
+  <b-alert variant="danger" show v-if="serviceError">
+    {{ serviceError.message }}
+  </b-alert>
   <div class="card text-center">
     <div class="card-header"></div>
     <div class="card-block">
@@ -49,7 +45,8 @@ export default {
       jumbotronHeader: 'Account Login',
       cardHeader: 'Login Below',
       email: '',
-      password: ''
+      password: '',
+      serviceError: null
     }
   },
   methods: {
@@ -64,13 +61,15 @@ export default {
       })
       .then((res) => {
         console.log('.then ', res)
+        this.$store.dispatch('loginSuccess', res)
         this.$endLoading('user/login');
         this.$router.push("/")
       })
       .catch((err) => {
         console.log('.catch ', err)
-        this.$endLoading('user/login');
-        this.$router.push("/")
+        this.serviceError = err
+        this.$endLoading('user/login')
+        // this.$router.push("/")
       });
     }
   },
