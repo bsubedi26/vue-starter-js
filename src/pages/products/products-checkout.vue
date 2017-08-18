@@ -74,7 +74,6 @@ export default {
       this.$store.dispatch('quantityDecrement', product)
     },
     removeFromCart(product) {
-      console.log('cmp')
       this.$store.dispatch('removeFromCart', product)
     }
   }

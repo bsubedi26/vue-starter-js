@@ -66,15 +66,6 @@
       isLoggedIn() {
         return this.$store.getters.isLoggedIn
       },
-      // totalQuantity() {
-      //   return this.$store.getters.totalQuantity
-      // },
-      // totalPrice() {
-      //   return this.$store.getters.totalPrice
-      // },
-      // cart() {
-      //   return this.$store.getters.cart
-      // },
     },
 
     methods: {
@@ -82,9 +73,6 @@
         this.$feathers.logout()
         this.$store.dispatch('logout').then(() =>this.$router.push('/login'))
       },
-      // handleCartClick() {
-      //   this.showCart = !this.showCart
-      // }
     }
   }
 </script>
