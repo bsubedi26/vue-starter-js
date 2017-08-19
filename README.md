@@ -1,45 +1,29 @@
-# Vue.js starter template
+# vue-starter
 
-<p align="center">
-  <img src="src/assets/images/logo.png" height="100" />
-</p>
+> A minimal Vue.js project
 
-A VueJS starter-template to get started with [Vue.js](https://github.com/vuejs/vue) library.
+## Build Setup
 
-Technologies used:
-* [Vue.js 2](https://github.com/vuejs/vue)
-* [Vue Router 2](https://github.com/vuejs/vue-router)
-* [Bootstrap 4](https://v4-alpha.getbootstrap.com/)
-* [Font Awesome](http://fontawesome.io/)
-* [SASS](http://sass-lang.com/)
-* [Webpack 2](https://webpack.js.org/)
-* [Yarn](https://yarnpkg.com/en/docs/install)
-* ...and many more
+``` bash
+# clone repository
+git clone https://github.com/bsubedi26/vue-starter-js.git
 
-## Getting started
+# install client dependencies
+npm install
 
-1. Be sure you have [Yarn](https://yarnpkg.com/en/docs/install) installed globally.
-2. Clone the repo & run `yarn` from the project root
+# serve with hot reload at localhost:8080
+npm run start
 
-## Single File Components
-See [instructions](docs/single-file-components.md) for example usage of [single file components](https://vuejs.org/v2/guide/single-file-components.html).
+# install server dependencies
+cd /server
+npm install
 
-## Available commands
+# start server on localhost:3030
+npm run start
 
-```sh
-yarn start
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
 ```
-
-Runs the Webpack module-bundler, starts watching for changes & launches the BrowserSync server to [http://localhost:3000](http://localhost:3000) (it's possible to change the port from `package.json` config-section). Uses [Webpack Dashboard](https://github.com/FormidableLabs/webpack-dashboard)
-
-```sh
-yarn lint:js
-```
-
-Lints javascript-files inside `/src` directory
-
-```sh
-yarn build
-```
-
-Runs the webpack module-bundler with production-settings (compress etc.) and builds the project to `/build` directory.

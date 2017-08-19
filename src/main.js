@@ -1,59 +1,37 @@
-import Vue from 'vue';
-import store from './store';
-import { LoadingState } from 'src/config/loading-state';
-import Navigation from 'components/navigation/navigation';
-import feathers from './util/feathers';
+import Vue from 'vue'
+import VeeValidate from 'vee-validate'
+import App from './App'
+import router from './router'
+import store from './store'
+import Navbar from './components/Navbar.vue';
+import Loader from './components/Loader.vue';
+import Toast from './components/Toast.vue';
+import ProductsList from './pages/products/products-list.vue';
+import feathers from '@/config/feathers';
 
-import 'src/config/http';
-import routes from 'src/routes';
-import 'src/style.scss';
+// Vue.config.productionTip = false;
 
-/////////////////////////////////////////////////////////////
-/////////////////////////PLUGINS/////////////////////////////
-/////////////////////////////////////////////////////////////
-import VueRouter from 'vue-router';
 import BootstrapVue from 'bootstrap-vue';
-import VeeValidate from 'vee-validate';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import './assets/styles/main.scss'
 
-Vue.use(VueRouter);
+// GLOBAL COMPONENTS
+Vue.component('navbar', Navbar);
+Vue.component('loader', Loader);
+Vue.component('toast', Toast);
+Vue.component('products-list', ProductsList);
+
+// PLUGINS
 Vue.use(BootstrapVue);
 Vue.use(VeeValidate);
-
-/////////////////////////////////////////////////////////////
-////////////////////GLOBAL COMPONENTS////////////////////////
-/////////////////////////////////////////////////////////////
-import Spinner from 'components/spinner/spinner.vue';
-import Loader from 'components/Loader/loader.vue';
-Vue.component('spinner', Spinner);
-Vue.component('loader', Loader);
-
-/////////////////////////////////////////////////////////////
-/////////////////////////APP INIT////////////////////////////
-/////////////////////////////////////////////////////////////
-const router = new VueRouter({
-  routes,
-  mode: 'history',
-  linkActiveClass: 'active'
-});
-
 Vue.prototype.$feathers = feathers;
 
+/* eslint-disable no-new */
 new Vue({
+  el: '#app',
   router,
   store,
-  components: {
-    Navigation,
-  },
-
-  data(){
-    return {
-      isLoading: false
-    };
-  },
-
-  created(){
-    LoadingState.$on('toggle', (isLoading) => {
-      this.isLoading = isLoading;
-    });
-  }
-}).$mount('#app');
+  template: '<App/>',
+  components: { App }
+})
