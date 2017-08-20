@@ -6,7 +6,6 @@ import store from './store'
 import Navbar from './components/Navbar.vue';
 import Loader from './components/Loader.vue';
 import Toast from './components/Toast.vue';
-import ProductsList from './pages/products/products-list.vue';
 import feathers from '@/config/feathers';
 import dictionary from '@/config/validate-rules';
 
@@ -21,7 +20,6 @@ import './assets/styles/main.scss'
 Vue.component('navbar', Navbar);
 Vue.component('loader', Loader);
 Vue.component('toast', Toast);
-Vue.component('products-list', ProductsList);
 
 // PLUGINS
 Vue.use(BootstrapVue);

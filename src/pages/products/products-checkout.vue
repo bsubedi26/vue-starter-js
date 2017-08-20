@@ -50,7 +50,7 @@ export default {
   name: 'app-products-checkout',
   data() {
     return {
-      showCart: false,
+
     }
   },
 

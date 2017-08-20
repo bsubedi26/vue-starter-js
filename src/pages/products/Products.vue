@@ -5,10 +5,14 @@
 </template>
 
 <script>
+import ProductsList from './products-list'
 
 
 export default {
   name: 'app-products',
+  components: {
+    'products-list': ProductsList
+  },
   data() {
     return {
 
