@@ -22,9 +22,9 @@ export default {
   data() {
     return {
       navigations: [
-        { path: '/account', name: 'Main' },
-        { path: '/account/inbox', name: 'Inbox' },
+        { path: '/account', name: 'Profile' },
         { path: '/account/settings', name: 'Settings' },
+        { path: '/account/inbox', name: 'Mail' },
         // { path: 'sent', name: 'Sent' },
         // { path: 'trash', name: 'Trash' },
       ]

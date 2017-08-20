@@ -7,7 +7,7 @@ export const totalQuantity = state => {
   }, 0)
   return quantity
 }
-export const totalPrice =  state =>  {
+export const totalPrice =  state => {
   const price = state.cart
   .map((item, index) => {
     const price = item.quantity * item.product.price

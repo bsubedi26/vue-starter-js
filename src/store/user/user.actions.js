@@ -15,13 +15,10 @@ const actions = {
     });
 
   },
-  signup({ dispatch, commit }, credentials) {
-    return new Promise((resolve, reject) => {
-      setTimeout(() => {
-        localStorage.setItem("token", "JWT");
-        commit('LOGIN_SUCCESS');
-        reject('Invalid Signup');
-      }, 1500);
+  deleteAccountSuccess({ dispatch }) {
+    return new Promise(resolve => {
+      dispatch('logout')
+      resolve()
     });
   },
 };

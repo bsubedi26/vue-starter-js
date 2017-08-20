@@ -25,7 +25,7 @@ module.exports = {
     get: [ authenticate('jwt') ],
     create: [hashPassword(), gravatar()],
     update: [ authenticate('jwt') ],
-    patch: [ authenticate('jwt') ],
+    patch: [ authenticate('jwt'), hashPassword() ],
     remove: [ authenticate('jwt') ]
   },
 

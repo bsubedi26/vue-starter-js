@@ -9,12 +9,18 @@
   
     <b-collapse is-nav id="nav_collapse">
   
-      <b-nav is-nav-bar>
-        <b-nav-item v-for="navigationLink in navigationLinks" :key="navigationLink.name">
+      <b-nav is-nav-bar v-if="!isLoggedIn">
+        <b-nav-item v-for="navigationLink in guestLinks" :key="navigationLink.name">
           <router-link  class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
         </b-nav-item>
- 
       </b-nav>
+
+      <b-nav is-nav-bar v-if="isLoggedIn">
+        <b-nav-item v-for="navigationLink in authLinks" :key="navigationLink.name">
+          <router-link  class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
+        </b-nav-item>
+      </b-nav>
+
   
       <!-- Right aligned nav items -->
       <b-nav is-nav-bar class="ml-auto">
@@ -53,11 +59,18 @@
     data() {
       return {
         showCart: false,
-        navigationLinks: [
+        guestLinks: [
           { name: 'Home', path: '/' },
           { name: 'Login', path: '/login' },
           { name: 'Signup', path: '/signup' },
           { name: 'Products', path: '/products' },
+        ],
+        authLinks: [
+          { name: 'Home', path: '/' },
+          { name: 'Products', path: '/products' },
+          { name: 'Settings', path: '/account' },
+          { name: 'Cart', path: '/products/cart' },
+        
         ],
       }
     },

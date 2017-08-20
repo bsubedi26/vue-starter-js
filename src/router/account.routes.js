@@ -6,15 +6,18 @@ const routes = [
   {
     path: '/account',
     component: Account,
+    meta: { requiresAuth: true },
     // Note that nested paths that start with / will be treated as a root path
     children: [
       {
         path: 'inbox',
-        component: AccountInbox
+        component: AccountInbox,
+        meta: { requiresAuth: true }
       },
       {
         path: 'settings',
-        component: AccountSettings
+        component: AccountSettings,
+        meta: { requiresAuth: true }
       }
     ]
   },

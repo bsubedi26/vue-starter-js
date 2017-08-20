@@ -10,7 +10,6 @@ const routes = [
   {
     path: '/products/details/:id',
     component: ProductDetails,
-    // meta: { requiresAuth: true }
   },
   {
     path: '/products/checkout',

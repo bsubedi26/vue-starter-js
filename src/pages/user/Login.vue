@@ -63,7 +63,7 @@ export default {
         console.log('.then ', res)
         this.$store.dispatch('loginSuccess', res)
         this.$endLoading('user/login');
-        this.$router.push("/")
+        this.$router.push("/account")
       })
       .catch((err) => {
         console.log('.catch ', err)
