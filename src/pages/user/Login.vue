@@ -4,11 +4,13 @@
   <b-alert variant="danger" show v-if="serviceError">
     {{ serviceError.message }}
   </b-alert>
+
   <div class="card text-center">
     <div class="card-header"></div>
     <div class="card-block">
       <h4 class="card-title"> {{ cardHeader }}</h4>
-          
+      <icon name="search"></icon>
+
       <form class="mx-auto" style="width: 768px;" @submit.prevent="handleSubmit(email, password)" novalidate>
 
         <fieldset :class="{ 'has-danger': errors.has('email') }">
@@ -74,7 +76,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this)
+    
   }
 }
 </script>

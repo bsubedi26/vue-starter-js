@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable type="light" variant="primary" toggle-breakpoint="md">
+  <b-navbar style="background: lightblue;" toggleable type="light" toggle-breakpoint="md">
   
     <b-nav-toggle target="nav_collapse"></b-nav-toggle>
   

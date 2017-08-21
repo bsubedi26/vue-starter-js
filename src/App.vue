@@ -1,8 +1,15 @@
 <template>
   <div id="app">
     <navbar></navbar>  
-    <img width="100" height="100" src="./assets/logo.png">
+    <!-- <img width="100" height="100" src="./assets/logo.png"> -->
     <router-view></router-view>
+
+    <!-- <footer style="background: lightblue" class="footer">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer> -->
+    
   </div>
 </template>
 
