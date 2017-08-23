@@ -15,16 +15,12 @@ import 'element-ui/lib/theme-default/index.css'
 // ****GLOBAL COMPONENTS****
 import Navbar from './components/Navbar.vue'
 import Loader from './components/Loader.vue'
-import Toast from './components/Toast.vue'
-import Modal from './components/Modal.vue'
-// import Message from './components/Message.vue'
-import Icon from 'vue-awesome/components/Icon'
+import elModal from './components/Modal.vue'
+import elIcon from 'vue-awesome/components/Icon'
 Vue.component('navbar', Navbar);
 Vue.component('loader', Loader);
-Vue.component('toast', Toast);
-// Vue.component('message-dialog', Message);
-Vue.component('modal', Modal);
-Vue.component('icon', Icon);
+Vue.component('modal', elModal);
+Vue.component('icon', elIcon);
 
 
 // ****GLOBAL FILTERS****

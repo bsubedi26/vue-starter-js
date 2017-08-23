@@ -2,8 +2,6 @@
   <!-- <div class="d-flex flex-row flex-wrap justify-content-center"> -->
   <div class="products-list-container">
     <div class="row justify-content-center">
-      <toast :message="toastrMessage" :class="{ show: showToast }"/>
-      
       <div class="card col-md-4" v-for="product in products" :key="product.id">
         <div class="row mx-auto">
           <strong>{{product.id}}) {{product.name}}</strong> 
@@ -37,26 +35,18 @@
     data() {
       return {
         msg: 'Products List',
-        showToast: false,
-        toastrMessage: ''
-
       }
     },
     methods: {
-      handleQuantityInputChange(product) {
-
-      },
-      handleQuantityInput(product) {
-
-      },
 
       addToCart(product) {
         this.$store.dispatch('addToCart', product)
           .then(response => {
-            this.toastrMessage = response
-            this.showToast = true
-            // remove toastr after 3 seconds
-            setTimeout(() => { this.showToast = false }, 3000)
+            this.$message({
+              showClose: true,
+              message: 'Successfully added product to cart.',
+              type: 'success'
+            });
           })
       },
       goToDetails(product) {
