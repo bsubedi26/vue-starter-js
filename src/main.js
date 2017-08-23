@@ -27,7 +27,7 @@ Vue.component('icon', Icon);
 
 // ****GLOBAL FILTERS****
 import * as filters from './filters'
-Vue.filter('toString', filters.toString)
+Vue.filter('numberToString', filters.numberToString)
 
 
 // ****GLOBAL PLUGINS****

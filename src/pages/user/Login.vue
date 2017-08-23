@@ -9,7 +9,6 @@
     <div class="card-header"></div>
     <div class="card-block">
       <h4 class="card-title"> {{ cardHeader }}</h4>
-      <icon name="search"></icon>
 
       <form class="mx-auto" style="width: 768px;" @submit.prevent="handleSubmit(email, password)" novalidate>
 

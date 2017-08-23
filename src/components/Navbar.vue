@@ -4,7 +4,7 @@
         
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" v-if="!isLoggedIn">
       
-      <el-menu-item :index="navigationLink.id | toString " v-for="navigationLink in guestLinks" :key="navigationLink.name">
+      <el-menu-item :index="navigationLink.id | numberToString" v-for="navigationLink in guestLinks" :key="navigationLink.name">
           <router-link class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
       </el-menu-item>
 <!-- 

@@ -1,5 +1,5 @@
-import toString from './toString';
+import numberToString from './numberToString';
 
 export { 
-  toString
+  numberToString
 }
