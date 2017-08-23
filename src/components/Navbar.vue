@@ -1,29 +1,23 @@
 <template>
   <div>
-    
         
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" v-if="!isLoggedIn">
-      
-      <el-menu-item :index="navigationLink.id | numberToString" v-for="navigationLink in guestLinks" :key="navigationLink.name">
-          <router-link class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
+      <el-menu-item @click="handleNavigationClick(navigationLink.path)" :index="navigationLink.id | numberToString" v-for="navigationLink in guestLinks" :key="navigationLink.name">
+        {{ navigationLink.name }}
       </el-menu-item>
-<!-- 
-      <el-menu-item index="1">Processing Center</el-menu-item>
-      <el-submenu index="2">
-        <template slot="title">Settings</template>
-        <el-menu-item index="2-1">Profile</el-menu-item>
-        <el-menu-item index="2-2">Account Settings</el-menu-item>
-        <el-menu-item index="2-3">Logout</el-menu-item>
-      </el-submenu>
-      <el-menu-item index="1">Processing Center</el-menu-item>
-      <el-menu-item index="1">Processing Center</el-menu-item>
-      <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">Orders</a></el-menu-item>
-      -->
     </el-menu>
-    <div class="line"></div>
 
-    
+            
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" v-if="isLoggedIn">
+      <el-menu-item @click="handleNavigationClick(navigationLink.path)" :index="navigationLink.id | numberToString" v-for="navigationLink in authLinks" :key="navigationLink.name">
+        {{ navigationLink.name }}
+      </el-menu-item>
 
+      <el-menu-item index="logout" @click="handleLogout()">
+        Logout
+      </el-menu-item>
+
+    </el-menu>
 
   </div>
 </template>
@@ -32,15 +26,9 @@
 
   export default {
     name: 'Navbar',
-    components: {
-      'app-navbar-cart': NavbarCart
-    },
     data() {
       return {
         activeIndex: '1',
-        activeIndex2: '1',
-
-        showCart: false,
         guestLinks: [
           { id: 1, name: 'Home', path: '/' },
           { id: 2, name: 'Forum', path: '/forum' },
@@ -53,18 +41,22 @@
           { id: 2, name: 'Forums', path: '/forums' },
           { id: 3, name: 'Products', path: '/products' },
           { id: 4, name: 'Settings', path: '/account' },
-          { id: 5, name: 'Cart', path: '/products/cart' },
+          { id: 5, name: 'Login', path: '/login' },
+          { id: 6, name: 'Signup', path: '/signup' },      
         
         ],
       };
     },
     methods: {
+      handleNavigationClick(path) {
+        this.$router.push(path)
+      },
       handleSelect(key, keyPath) {
-        console.log(key, keyPath);
+        // console.log(key, keyPath);
       },
       handleLogout() {
         this.$feathers.logout()
-        this.$store.dispatch('logout').then(() =>this.$router.push('/login'))
+        this.$store.dispatch('logout').then(() => this.$router.push('/login'))
       },
   
     },

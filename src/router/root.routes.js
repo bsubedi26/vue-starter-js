@@ -1,6 +1,6 @@
 import Home from '@/pages/Home'
-import Login from '@/pages/user/Login'
-import Signup from '@/pages/user/Signup'
+import Login from '@/pages/login/Login'
+import Signup from '@/pages/signup/Signup'
 import Forum from '@/pages/forum/Forum'
 
 const routes = [
@@ -19,6 +19,9 @@ const routes = [
   {
     path: '/forum',
     component: Forum,
+    meta: {
+      requiresAuth: true
+    }
   },
 ]
 

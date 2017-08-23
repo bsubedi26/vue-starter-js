@@ -37,7 +37,10 @@ import VeeValidate, { Validator } from 'vee-validate'
 
 Vue.use(BootstrapVue)
 Vue.use(ElementUI)
-Vue.use(VeeValidate)
+Vue.use(VeeValidate, {
+  errorBagName: 'errors', 
+  fieldsBagName: 'inputs', // property conflicts: DEFAULT was fields
+})
 
 
 // ****GLOBAL CONFIG****
