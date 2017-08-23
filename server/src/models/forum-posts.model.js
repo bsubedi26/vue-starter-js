@@ -1,0 +1,19 @@
+// forum-posts-model.js - A mongoose model
+// 
+// See http://mongoosejs.com/docs/models.html
+// for more of what you can do here.
+module.exports = function (app) {
+  const mongooseClient = app.get('mongooseClient');
+  const { Schema } = mongooseClient;
+  const forumPosts = new Schema({
+    text: { type: String, required: true },
+    createdAt: { type: Date, default: Date.now },
+    updatedAt: { type: Date, default: Date.now },
+
+    $mainCategoryId: { type: Schema.Types.ObjectId, ref: 'mainCategories' },
+    $subCateoryId: { type: Schema.Types.ObjectId, ref: 'forumSubcategories' },
+    $userId: { type: Schema.Types.ObjectId, ref: 'User' },
+  });
+
+  return mongooseClient.model('forumPosts', forumPosts);
+};

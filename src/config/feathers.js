@@ -12,9 +12,9 @@ const fClient = feathers();
 
 fClient.configure(fHooks());
 const restClient = rest('http://localhost:3030')
-fClient.configure(restClient.axios(axios))
-// const socket = io('http://localhost:3030');
-// fClient.configure(fSocketio(socket));
+// fClient.configure(restClient.axios(axios))
+const socket = io('http://localhost:3030');
+fClient.configure(fSocketio(socket));
 fClient.configure(fAuthentication({
   storage: window.localStorage
 }));

@@ -38,7 +38,7 @@
     </div>
 
       <!-- <div class="d-flex flex-row flex-wrap justify-content-center"> -->
-      <div class="row">
+      <!-- <div class="row">
         <div class="card col-md-3" v-for="currency in cryptoCurrencies" :key="currency.id">
           <div class="row mx-auto">
             <strong>{{currency.rank}}) {{currency.name}}</strong> 
@@ -46,7 +46,7 @@
             
         </div>
     
-    </div>
+    </div> -->
 
   </div>
 
@@ -70,7 +70,7 @@ export default {
     }
   },
   created() {
-    this.$store.dispatch('getCryptoCurrencies')
+    // this.$store.dispatch('getCryptoCurrencies')
   }
 }
 </script>

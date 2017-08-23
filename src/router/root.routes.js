@@ -1,6 +1,7 @@
 import Home from '@/pages/Home'
 import Login from '@/pages/user/Login'
 import Signup from '@/pages/user/Signup'
+import Forum from '@/pages/forum/Forum'
 
 const routes = [
   {
@@ -14,6 +15,10 @@ const routes = [
   {
     path: '/signup',
     component: Signup
+  },
+  {
+    path: '/forum',
+    component: Forum,
   },
 ]
 
