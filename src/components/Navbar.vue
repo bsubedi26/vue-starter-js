@@ -1,53 +1,32 @@
 <template>
-  <b-navbar style="background: lightblue;" toggleable type="light" toggle-breakpoint="md">
-  
-    <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-  
-    <b-navbar-brand href="#">
-      <app-navbar-cart></app-navbar-cart>
-    </b-navbar-brand>
-  
-    <b-collapse is-nav id="nav_collapse">
-  
-      <b-nav is-nav-bar v-if="!isLoggedIn">
-        <b-nav-item v-for="navigationLink in guestLinks" :key="navigationLink.name">
-          <router-link  class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
-        </b-nav-item>
-      </b-nav>
-
-      <b-nav is-nav-bar v-if="isLoggedIn">
-        <b-nav-item v-for="navigationLink in authLinks" :key="navigationLink.name">
-          <router-link  class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
-        </b-nav-item>
-      </b-nav>
-
-  
-      <!-- Right aligned nav items -->
-      <b-nav is-nav-bar class="ml-auto">
-  
-        <b-nav-item-dropdown right>
-          <!-- Using button-content slot -->
-          <template slot="button-content">
-            <span class="text-white"></span>
-          </template>
-
+  <div>
+    
         
-          <b-dropdown-item v-if="!isLoggedIn" to="/login">Login</b-dropdown-item>
-          <b-dropdown-item v-if="!isLoggedIn" to="/signup">Signup</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" to="/account">Account Settings</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" @click="handleLogout()">
-            Logout!
-          </b-dropdown-item>
-          
-        </b-nav-item-dropdown>
-      </b-nav>
-  
-    </b-collapse>
-  </b-navbar>
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" v-if="!isLoggedIn">
+      
+      <el-menu-item :index="navigationLink.id | toString " v-for="navigationLink in guestLinks" :key="navigationLink.name">
+          <router-link class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
+      </el-menu-item>
+<!-- 
+      <el-menu-item index="1">Processing Center</el-menu-item>
+      <el-submenu index="2">
+        <template slot="title">Settings</template>
+        <el-menu-item index="2-1">Profile</el-menu-item>
+        <el-menu-item index="2-2">Account Settings</el-menu-item>
+        <el-menu-item index="2-3">Logout</el-menu-item>
+      </el-submenu>
+      <el-menu-item index="1">Processing Center</el-menu-item>
+      <el-menu-item index="1">Processing Center</el-menu-item>
+      <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">Orders</a></el-menu-item>
+      -->
+    </el-menu>
+    <div class="line"></div>
+
+    
 
 
+  </div>
 </template>
-
 <script>
   import NavbarCart from './NavbarCart';
 
@@ -58,38 +37,42 @@
     },
     data() {
       return {
+        activeIndex: '1',
+        activeIndex2: '1',
+
         showCart: false,
         guestLinks: [
-          { name: 'Home', path: '/' },
-          { name: 'Login', path: '/login' },
-          { name: 'Signup', path: '/signup' },
-          { name: 'Products', path: '/products' },
+          { id: 1, name: 'Home', path: '/' },
+          { id: 2, name: 'Forum', path: '/forum' },
+          { id: 3, name: 'Login', path: '/login' },
+          { id: 4, name: 'Signup', path: '/signup' },      
+          { id: 5, name: 'Products', path: '/products' },
         ],
         authLinks: [
-          { name: 'Home', path: '/' },
-          { name: 'Products', path: '/products' },
-          { name: 'Settings', path: '/account' },
-          { name: 'Cart', path: '/products/cart' },
+          { id: 1, name: 'Home', path: '/' },
+          { id: 2, name: 'Forums', path: '/forums' },
+          { id: 3, name: 'Products', path: '/products' },
+          { id: 4, name: 'Settings', path: '/account' },
+          { id: 5, name: 'Cart', path: '/products/cart' },
         
         ],
-      }
+      };
     },
-
+    methods: {
+      handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+      },
+      handleLogout() {
+        this.$feathers.logout()
+        this.$store.dispatch('logout').then(() =>this.$router.push('/login'))
+      },
+  
+    },
     computed: {
       isLoggedIn() {
         return this.$store.getters.isLoggedIn
       },
     },
-
-    methods: {
-      handleLogout() {
-        this.$feathers.logout()
-        this.$store.dispatch('logout').then(() =>this.$router.push('/login'))
-      },
-    }
   }
 </script>
 
-<style scoped>
-
-</style>

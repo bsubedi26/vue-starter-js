@@ -1,6 +1,6 @@
 {
-  "name": "vue-router",
-  "version": "1.0.0",
+  "name": "vue-forum",
+  "version": "0.0.0",
   "description": "A Vue.js project",
   "author": "Bibek Subedi <bsubedi26@gmail.com>",
   "private": true,

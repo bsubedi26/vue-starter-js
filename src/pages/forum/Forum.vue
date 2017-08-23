@@ -1,6 +1,13 @@
 <template>
 
   <div>
+    <!-- <b-alert variant="danger" show v-if="serviceError">
+      {{ serviceError.message }}
+    </b-alert> -->
+    <el-alert v-if="serviceError"
+      :title="serviceError.message"
+      type="error">
+    </el-alert>
     <el-input style="max-width:225px;" class="mx-auto" placeholder="Add new Forum Category" v-model="inputCategory"></el-input>
     <el-button @click="handleSubmit(inputCategory)">Submit</el-button>
 
@@ -28,6 +35,7 @@
         <div>Controlled consequences: users should be granted the freedom to operate, including canceling, aborting or terminating current operation.</div>
       </el-collapse-item> -->
     </el-collapse>
+    <loader v-if="$isLoading('forum/find')" />
 
   </div>
 
@@ -40,7 +48,8 @@
       return {
         activeNames: ['1'],
         forumCategories: [],
-        inputCategory: ''
+        inputCategory: '',
+        serviceError: null
       };
     },
     methods: {
@@ -54,12 +63,23 @@
           "category": "category_1",
           "description": "description_1"
         })
+      },
+      delay(t) {
+        return new Promise(resolve => setTimeout(resolve, t))
       }
     },
-    mounted() {
-      this.$feathers.service('forum-categories').find()
-      .then(res => this.forumCategories = res.data)
-      .catch(res => console.log(res))
+    async mounted() {
+      try {
+        this.$startLoading('forum/find')
+        await this.delay(3000)
+        const categories = await this.$feathers.service('forum-categories').find()
+        this.forumCategories = categories.data
+        this.$endLoading('forum/find')
+      } catch (err) {
+        console.log(err)
+        this.serviceError = err
+        this.$endLoading('forum/find')
+      }
 
       this.$feathers.service('forum-categories').on('created', (data) => {
         console.log('data ',data)
