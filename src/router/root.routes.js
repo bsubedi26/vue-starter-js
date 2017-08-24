@@ -4,7 +4,7 @@ import Signup from '@/pages/user/Signup'
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     component: Home,
     // meta: { requiresAuth: true },
   },

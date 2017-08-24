@@ -12,8 +12,8 @@
   
       <p class="products-info-text mt-3">{{product.info}}</p>
       
-      <button @click="addToCart(product)" class="btn btn-primary mb-3 cursor-pointer">Add to Cart</button>
-      <button @click="goBack()" class="btn btn-outline-success mb-3 cursor-pointer">Go Back</button>
+      <button @click="addToCart(product)" class="btn btn-primary mb-3">Add to Cart</button>
+      <button @click="goBack()" class="btn btn-outline-success mb-3">Go Back</button>
 
     </div>
   </div>
