@@ -1,7 +1,12 @@
 <template>
-  
-  <div class="home jumbotron">
-    Home page!
+
+  <div style="max-width: 768px;" class="mx-auto">
+    <div class="jumbotron">
+      Welcome to VueJS!
+    </div>
+    <bootstrap-carousel />
+    <div class="jumbotron">
+    </div>
   </div>
 
 </template>
