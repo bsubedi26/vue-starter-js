@@ -1,6 +1,6 @@
-import Home from '@/pages/Home'
-import Login from '@/pages/user/Login'
-import Signup from '@/pages/user/Signup'
+import Home from '@/pages/home/Home'
+import Login from '@/pages/login/Login'
+import Signup from '@/pages/signup/Signup'
 
 const routes = [
   {
