@@ -16,6 +16,10 @@ const routes = [
     path: '/signup',
     component: Signup
   },
+  {
+    path: '*',
+    redirect: '/home'
+  }
 ]
 
 export default routes
