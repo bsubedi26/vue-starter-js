@@ -1,3 +1,21 @@
+$black: #000000;
+$white: white;
+
 .cursor-pointer {
+  cursor: pointer;
+}
+
+.bg-primary {
+  background-color: $black !important;
+}
+
+
+.menu-icon {
+  background-color: $white !important;
+  cursor: pointer;
+}
+
+.navbar-toggler {
+  background-color: $white !important;
   cursor: pointer;
 }

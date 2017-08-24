@@ -1,11 +1,38 @@
 <template>
-  <b-navbar toggleable type="light" variant="primary" toggle-breakpoint="md">
-  
-    <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-  
+  <b-navbar :toggleable="true" type="light" variant="primary">
+<!--
+    <div class="menu-icon">
+        <b-nav-toggle target="nav_collapse"></b-nav-toggle>
+  </div>-->
+
     <b-navbar-brand href="#">
       <app-navbar-cart></app-navbar-cart>
     </b-navbar-brand>
+    
+  <!--<b-navbar-brand class="text-white" href="#">VueJS</b-navbar-brand>-->
+
+  <b-nav-form>
+    <!--<b-form-input size="sm" class="mr-sm-2" type="text" placeholder="Search" />-->
+    <!--<b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>-->
+    
+    
+    <b-nav-item-dropdown text="Bootstrap Routes">
+      <b-dropdown-item :to="navigationLink.path" v-for="navigationLink in bootstrapExampleLinks" :key="navigationLink.name">
+        {{ navigationLink.name }}
+      </b-dropdown-item>
+    </b-nav-item-dropdown>
+
+
+    <b-nav-item-dropdown text="Main Routes">
+      
+      <b-dropdown-item :to="navigationLink.path" v-for="navigationLink in navigationLinks" :key="navigationLink.name">
+            {{ navigationLink.name }}
+      </b-dropdown-item>
+    </b-nav-item-dropdown>
+
+  </b-nav-form>
+
+
   
     <b-collapse is-nav id="nav_collapse">
   
@@ -15,26 +42,24 @@
         </b-nav-item>
  
       </b-nav>
-  
-      <!-- Right aligned nav items -->
-      <b-nav is-nav-bar class="ml-auto">
-  
-        <b-nav-item-dropdown right>
-          <!-- Using button-content slot -->
-          <template slot="button-content">
-            <span class="text-white"></span>
-          </template>
-
-        
-          <b-dropdown-item v-if="!isLoggedIn" to="/login">Login</b-dropdown-item>
-          <b-dropdown-item v-if="!isLoggedIn" to="/signup">Signup</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" to="/account">Account Settings</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" @click="handleLogout()">
-            Logout!
-          </b-dropdown-item>
-          
-        </b-nav-item-dropdown>
-      </b-nav>
+    
+        <!-- Right aligned nav items -->
+        <b-nav is-nav-bar class="ml-auto">
+    
+          <b-nav-item-dropdown right>
+            <!-- Using button-content slot -->
+            <template slot="button-content">
+              <span class="text-white"></span>
+            </template>
+            <b-dropdown-item v-if="!isLoggedIn" to="/login">Login</b-dropdown-item>
+            <b-dropdown-item v-if="!isLoggedIn" to="/signup">Signup</b-dropdown-item>
+            <b-dropdown-item v-if="isLoggedIn" to="/account">Account Settings</b-dropdown-item>
+            <b-dropdown-item v-if="isLoggedIn" @click="handleLogout()">
+              Logout!
+            </b-dropdown-item>
+            
+          </b-nav-item-dropdown>
+        </b-nav>
   
     </b-collapse>
   </b-navbar>
@@ -59,6 +84,13 @@
           { name: 'Signup', path: '/signup' },
           { name: 'Products', path: '/products' },
         ],
+        bootstrapExampleLinks: [
+          { name: 'Scrollspy', path: '/bootstrap/scrollspy' },
+          { name: 'Modal', path: '/bootstrap/modal' },
+          { name: 'Table', path: '/bootstrap/table' },
+          { name: 'Tabs', path: '/bootstrap/tabs' },
+          
+        ]
       }
     },
 
@@ -78,5 +110,9 @@
 </script>
 
 <style scoped>
+
+    li {
+      list-style-type: none;
+    }
 
 </style>

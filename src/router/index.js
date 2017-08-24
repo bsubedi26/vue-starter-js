@@ -5,6 +5,7 @@ import routerAuth from '../config/router-auth'
 import rootRoutes from './root.routes'
 import accountRoutes from './account.routes'
 import productRoutes from './products.routes'
+import bootstrapRoutes from './bootstrap.routes'
 
 Vue.use(Router)
 
@@ -12,7 +13,8 @@ const router = new Router({
   routes: [
     ...rootRoutes,
    ...accountRoutes,
-   ...productRoutes
+   ...productRoutes,
+   ...bootstrapRoutes
   ]
 })
 

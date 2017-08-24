@@ -9,7 +9,6 @@ import axios from 'axios';
 const fClient = feathers();
 
 
-
 fClient.configure(fHooks());
 const restClient = rest('http://localhost:3030')
 fClient.configure(restClient.axios(axios))

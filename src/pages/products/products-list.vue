@@ -3,7 +3,7 @@
     <toast :message="toastrMessage" :class="{ show: showToast }"/>
     
     
-    <div class="card col-4" v-for="product in products" :key="product.id">
+    <div class="card col-md-4" v-for="product in products" :key="product.id">
       <div class="row mx-auto">
         <strong>{{product.id}}) {{product.name}}</strong> 
         <b-badge class="m-1" variant="info">${{ product.price }}</b-badge>
