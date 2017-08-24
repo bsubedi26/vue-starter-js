@@ -1,12 +1,10 @@
 <template>
   <div class="mx-auto products-container">
-
-    
-  <b-btn v-b-modal="'modal1'">Show Modal</b-btn>
-  <b-modal id="modal1">
-    Hello From Modal 1!
-  </b-modal>
-  
+      
+    <b-btn v-b-modal="'modal1'">Show Example Modal</b-btn>
+    <b-modal id="modal1">
+      Hello From Modal 1!
+    </b-modal>
 
     <products-list />
   </div>

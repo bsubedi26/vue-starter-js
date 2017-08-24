@@ -6,6 +6,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Image</th>
             <th>Quantity</th>
             <th>Price</th>
           </tr>
@@ -13,12 +14,16 @@
   
         <tbody>
   
-          <tr v-for="item in cart" :key="item.quantity">
-            <td class="text-left">{{ item.product.name }}</td>
+          <tr v-for="(item, index) in cart" :key="item.quantity">
+            <td class="text-left"><span>{{ item.product.name }}</span></td>
+            <!-- <td class="text-left">{{ item.product.name }}</td> -->
+            <td>
+              <img class="float-left" :src="item.product.src" width="100" height="100" />
+            </td>
             
-            <td style="border: 1px blue solid; width: 10%;"class="">
+            <td class="quantity-column">
               <i @click="quantityDecrement(item)" class="cursor-pointer float-left close fa fa-minus"></i>
-              {{ item.quantity }}
+              <span>{{ item.quantity }}</span>
               <i @click="quantityIncrement(item)" class="cursor-pointer float-right close fa fa-plus"></i>
             </td>
             <td class="text-left">
@@ -28,6 +33,7 @@
           </tr>
   
           <tr>
+            <td></td>
             <td></td>
             <td></td>
             <td class="text-left"><strong>Total: ${{ totalPrice }}</strong></td>
@@ -81,6 +87,13 @@ export default {
 </script>
 
 <style scoped>
+.quantity-column {
+  width: 10%;
+  display: flex;
+}
+.quantity-column i, .quantity-column span {
+  padding: 5px;
+}
 .fa-shopping-cart {
   color: white;
   font-size: 2em;
