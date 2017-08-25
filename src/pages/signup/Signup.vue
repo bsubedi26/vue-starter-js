@@ -31,7 +31,7 @@
           <button :disabled="errors.any()" type="submit" class="btn btn-outline-primary btn-block">Submit</button>
 
         </form>
-        <loader v-if="$isLoading('user/signup')" />
+        <loader v-if="$isLoading('users/create')" />
       </div>
       <div class="card-footer text-muted">
         Already have an Account?
@@ -56,15 +56,15 @@ export default {
   },
   methods: {
     handleSubmit(email, password) {
-      this.$startLoading('user/signup')
+      this.$startLoading('users/create')
       // this.$store.dispatch("userCreate", { email, password })
       this.$store.dispatch("users/create", { email, password })
       .then((doc) => {
-        this.$endLoading('user/signup')
+        this.$endLoading('users/create')
         this.$router.push("/login")
       })
       .catch((error) => {
-        this.$endLoading('user/signup')
+        this.$endLoading('users/create')
         this.serviceError = error
       })
     }

@@ -24,7 +24,7 @@
         <button :disabled="errors.any()" type="submit" class="btn btn-primary btn-block">Submit</button>
         
       </form>
-      <loader v-if="$isLoading('user/login')" />
+      <loader v-if="$isLoading('auth/authenticate')" />
 
     </div>
     <div class="card-footer text-muted">
@@ -52,17 +52,17 @@ export default {
   },
   methods: {
     handleSubmit(email, password) {
-      this.$startLoading('user/login')
+      this.$startLoading('auth/authenticate')
       // this.$store.dispatch("login", { strategy: 'local', email, password })
       this.$store.dispatch('auth/authenticate', { strategy: 'local', email, password })
       .then((response) => {
         // this.$store.dispatch('loginSuccess', response)
-        this.$endLoading('user/login')
+        this.$endLoading('auth/authenticate')
         this.$router.push("/home")
       })
       .catch((error) => {
         this.serviceError = error
-        this.$endLoading('user/login')
+        this.$endLoading('auth/authenticate')
       });
     }
   },

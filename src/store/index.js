@@ -9,6 +9,7 @@ import user from './user'
 import auth from './auth'
 import product from './product'
 import plugins from './plugins'
+import * as getters from './getters'
 
 const VuexLoading = createVuexLoader({
   // The Vuex module name, 'loading' by default.
@@ -25,36 +26,18 @@ Vue.use(VuexLoading)
 const store = new Vuex.Store({
   modules: {
     user,
-    'localAuth': auth,
     product
+    // 'localAuth': auth,
   },
   plugins: [
     VuexLoading.Store,
     // createPersistedState(), 
     plugins,
-    // feathersVuex(feathersClient,
-    //   {
-    //     idField: '_id',
-    //     auth: {
-    //       userService: '/users'
-    //     }
-    //   })
   ],
-  // state: {}
+  getters: getters
 })
 
+// function that maps each feathers service as a vuex module
 configureFeathersVuex(store)
-// import fClient from '@/config/feathers'
-// fClient.configure(feathersVuex(store, 
-//     {
-//       idField: '_id',
-//       auth: {
-//         userService: '/users'
-//       }
-//     }
-//   ))
 
-// fClient.service('/users')
-// fClient.service('/messages')
-// fClient.service('/todos')
 export default store
