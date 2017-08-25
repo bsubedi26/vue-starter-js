@@ -32,7 +32,7 @@ export default {
     }
   },
   mounted() {
-    console.log('$route params ', this.$route.params)
+    // console.log('$route params ', this.$route.params)
   },
   methods: {
     addToCart(product) {

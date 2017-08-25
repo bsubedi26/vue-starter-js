@@ -1,5 +1,5 @@
 const state = {
-  credentials: {}
+  accessToken: undefined
 }
 
 export default state

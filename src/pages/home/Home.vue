@@ -1,12 +1,19 @@
 <template>
 
   <div style="max-width: 768px;" class="mx-auto">
-    <div class="jumbotron">
-      Welcome to VueJS!
+
+    <div class="d-flex">
+      <div class="col-md-6">
+        <!-- <bootstrap-carousel /> -->
+      </div>
+
+      <div class="col-md-6">
+        <!-- <bootstrap-carousel /> -->
+      </div>
+
     </div>
-    <bootstrap-carousel />
-    <div class="jumbotron">
-    </div>
+
+    <div class="jumbotron"></div>
   </div>
 
 </template>
@@ -18,13 +25,19 @@ export default {
   name: 'hello',
   data() {
     return {
-
+      slide: 0,
     }
   },
 
   
   computed: {
 
+  },
+  mounted() {
+    // this.$store.dispatch('todos/find')
+    // .then(res => {
+    //  console.log(res)
+    // })
   }
 }
 </script>

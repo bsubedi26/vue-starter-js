@@ -1,8 +1,6 @@
 <template>
   <div>
     <b-carousel id="carousel1"
-                controls
-                indicators
                 background="#ababab"
                 :interval="2000"
                 v-model="slide"

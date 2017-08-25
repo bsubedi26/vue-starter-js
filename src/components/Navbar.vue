@@ -12,7 +12,8 @@
   <!--<b-navbar-brand class="text-white" href="#">VueJS</b-navbar-brand>-->
 
   <b-nav-form>
-      <b-nav-item-dropdown text="Bootstrap Routes">
+
+      <b-nav-item-dropdown text="Bootstrap Routes">        
         <b-dropdown-item :to="navigationLink.path" v-for="navigationLink in bootstrapExampleLinks" :key="navigationLink.name">
           {{ navigationLink.name }}
         </b-dropdown-item>
@@ -21,6 +22,9 @@
       <b-nav-item-dropdown text="Main Routes">
         <b-dropdown-item :to="navigationLink.path" v-for="navigationLink in navigationLinks" :key="navigationLink.name">
               {{ navigationLink.name }}
+        </b-dropdown-item>
+        <b-dropdown-item v-if="isLoggedIn" @click="handleLogout()">
+          Logout
         </b-dropdown-item>
       </b-nav-item-dropdown>
 
@@ -86,14 +90,13 @@
 
     computed: {
       isLoggedIn() {
-        return this.$store.getters.isLoggedIn
+        return this.$store.state.auth.accessToken
       },
     },
 
     methods: {
       handleLogout() {
-        this.$feathers.logout()
-        this.$store.dispatch('logout').then(() =>this.$router.push('/login'))
+        this.$store.dispatch('auth/logout').then(() => this.$router.push('/login'))
       },
     }
   }

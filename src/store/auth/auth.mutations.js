@@ -1,10 +1,12 @@
 const mutations = {
   LOGIN_SUCCESS(state, payload) {
     const { accessToken, user } = payload
-    state.credentials = user;
+    state.accessToken = accessToken
+    state.isLoggedIn = true
   },
   LOGOUT_SUCCESS(state) {
-    state.credentials = {}
+    state.accessToken = undefined
+    state.isLoggedIn = false
   }
 };
 

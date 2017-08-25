@@ -50,10 +50,10 @@
       addToCart(product) {
         this.$store.dispatch('addToCart', product)
           .then(response => {
-            this.toastrMessage = response
-            this.showToast = true
+            // this.toastrMessage = response
+            // this.showToast = true
             // remove toastr after 3 seconds
-            setTimeout(() => { this.showToast = false }, 3000)
+            // setTimeout(() => { this.showToast = false }, 3000)
           })
       },
       goToDetails(product) {

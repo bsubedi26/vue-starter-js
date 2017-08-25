@@ -28,7 +28,7 @@
 
     </div>
     <div class="card-footer text-muted">
-      Don't have an Account? 
+      {{ signupText }}
       <router-link to="/signup"><span class="text-primary">Signup here.</span></router-link>
     </div>
   </div>
@@ -46,35 +46,28 @@ export default {
       cardHeader: 'Login Below',
       email: '',
       password: '',
-      serviceError: null
+      serviceError: undefined,
+      signupText: "Don't have an Account?"
     }
   },
   methods: {
     handleSubmit(email, password) {
       this.$startLoading('user/login')
-      console.log(email, password)
-      // this.$store.dispatch("login", {
-      this.$feathers.authenticate({
-        strategy: 'local',
-        email: this.email,
-        password: this.password
-      })
-      .then((res) => {
-        console.log('.then ', res)
-        this.$store.dispatch('loginSuccess', res)
-        this.$endLoading('user/login');
+      // this.$store.dispatch("login", { strategy: 'local', email, password })
+      this.$store.dispatch('auth/authenticate', { strategy: 'local', email, password })
+      .then((response) => {
+        // this.$store.dispatch('loginSuccess', response)
+        this.$endLoading('user/login')
         this.$router.push("/home")
       })
-      .catch((err) => {
-        console.log('.catch ', err)
-        this.serviceError = err
+      .catch((error) => {
+        this.serviceError = error
         this.$endLoading('user/login')
-        // this.$router.push("/home")
       });
     }
   },
   mounted() {
-    console.log(this)
+
   }
 }
 </script>

@@ -1,41 +1,3 @@
-<script>
-export default {
-  name: 'signup',
-  data() {
-    return {
-      anyLoading: false,
-      jumbotronHeader: 'Account Signup',
-      cardHeader: 'Signup Below',
-      email: '',
-      password: '',
-      serviceError: null
-    }
-  },
-  methods: {
-    handleSubmit(email, password) {
-      this.$startLoading('user/signup')
-      // this.$store.dispatch("signup", {
-      this.$feathers.service('users').create({
-        email: this.email,
-        password: this.password
-      })
-      .then((doc) => {
-        console.log('.then ', doc)
-        this.$endLoading('user/signup')
-        this.$router.push("/login")
-      })
-      .catch((error) => {
-        console.log('.catch ', error)
-        this.$endLoading('user/signup')
-        this.serviceError = error
-      })
-    }
-  },
-  mounted() {
-
-  }
-}
-</script>
 
 <template>
   <div class="signup">
@@ -79,6 +41,39 @@ export default {
   
   </div>
 </template>
+
+<script>
+export default {
+  name: 'signup',
+  data() {
+    return {
+      jumbotronHeader: 'Account Signup',
+      cardHeader: 'Signup Below',
+      email: '',
+      password: '',
+      serviceError: undefined
+    }
+  },
+  methods: {
+    handleSubmit(email, password) {
+      this.$startLoading('user/signup')
+      // this.$store.dispatch("userCreate", { email, password })
+      this.$store.dispatch("users/create", { email, password })
+      .then((doc) => {
+        this.$endLoading('user/signup')
+        this.$router.push("/login")
+      })
+      .catch((error) => {
+        this.$endLoading('user/signup')
+        this.serviceError = error
+      })
+    }
+  },
+  mounted() {
+
+  }
+}
+</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
