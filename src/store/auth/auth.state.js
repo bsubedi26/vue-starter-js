@@ -1,6 +1,6 @@
 const state = {
   accessToken: undefined,
-  nlah: ''
+  local: true
 }
 
 export default state
