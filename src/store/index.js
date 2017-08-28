@@ -8,8 +8,9 @@ import { createVuexLoader } from 'vuex-loading'
 import user from './user'
 import auth from './auth'
 import product from './product'
-import plugins from './plugins'
 import * as getters from './getters'
+
+import authModule from './auth-revised/index'
 
 const VuexLoading = createVuexLoader({
   // The Vuex module name, 'loading' by default.
@@ -27,17 +28,16 @@ const store = new Vuex.Store({
   modules: {
     user,
     product
-    // 'localAuth': auth,
   },
   plugins: [
-    VuexLoading.Store,
     // createPersistedState(), 
-    plugins,
+    VuexLoading.Store,
+    authModule
   ],
   getters: getters
 })
 
 // function that maps each feathers service as a vuex module
-configureFeathersVuex(store)
+// configureFeathersVuex(store)
 
 export default store

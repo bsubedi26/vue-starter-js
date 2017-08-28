@@ -90,7 +90,8 @@
 
     computed: {
       isLoggedIn() {
-        return this.$store.getters.accessToken
+        return false
+        // return this.$store.getters.accessToken
       },
     },
 
