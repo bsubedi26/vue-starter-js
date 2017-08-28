@@ -1,6 +1,7 @@
 import Home from '@/pages/home/Home'
 import Login from '@/pages/login/Login'
 import Signup from '@/pages/signup/Signup'
+import Chat from '@/pages/chat/Chat'
 
 const routes = [
   {
@@ -15,6 +16,10 @@ const routes = [
   {
     path: '/signup',
     component: Signup
+  },
+  {
+    path: '/chat',
+    component: Chat
   },
   {
     path: '*',

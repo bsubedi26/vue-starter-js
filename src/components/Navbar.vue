@@ -77,6 +77,7 @@
           { name: 'Login', path: '/login' },
           { name: 'Signup', path: '/signup' },
           { name: 'Products', path: '/products' },
+          { name: 'Chat', path: '/chat' },
         ],
         bootstrapExampleLinks: [
           { name: 'Scrollspy', path: '/bootstrap/scrollspy' },
@@ -90,8 +91,7 @@
 
     computed: {
       isLoggedIn() {
-        return false
-        // return this.$store.getters.accessToken
+        return this.$store.getters['auth/accessToken']
       },
     },
 

@@ -1,5 +1,6 @@
 const state = {
-  credentials: {}
+  list: [],
+  payload: undefined
 }
 
 export default state

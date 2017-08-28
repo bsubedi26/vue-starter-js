@@ -34,7 +34,7 @@ export default {
 
   },
   mounted() {
-    // this.$store.dispatch('todos/find')
+    // this.$store.dispatch('message/find')
     // .then(res => {
     //  console.log(res)
     // })

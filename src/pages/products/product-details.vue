@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     addToCart(product) {
-      this.$store.dispatch('addToCart', product)
+      this.$store.dispatch('product/addToCart', product)
     },
     goBack() {
       this.$router.go(-1)
@@ -45,7 +45,7 @@ export default {
 
   computed: {
     getProduct() {
-      const products = this.$store.getters.productPhones
+      const products = this.$store.getters['product/productPhones']
       const result = products.filter(product => product.id == this.$route.params.id)
       return result
     }

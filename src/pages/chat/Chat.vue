@@ -2,16 +2,41 @@
   <div class="chat-container row">
     <div class="users-list col-md-4">
       <div class="card">
-        <h3 class="card-header">40 Users Online!</h3>
-        <div class="card-block">
-          <h4 class="card-title">Special title treatment</h4>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h3 class="card-header"><span class="text-success">{{ userList.length }}</span> Users Online!</h3>
+        <div class="card-block" v-for="user in userList" :key="user._id">
+          <!--<h4 class="card-title">************</h4>-->
+
+          <div class="row p-3">
+            <img :src="user.avatar" width="100" height="100" />
+            <p class="card-text ml-3">Email: {{ user.email }}</p>
+          </div>
+  
         </div>
       </div>
     </div>
     <div class="messages-list col-md-8">
-      MESSAGES
+
+      <div v-for="message of messageList" :key="message.id">
+  
+              
+        <div class="message flex flex-row">
+          <!--<img :src="message.user.avatar || placeholder" :alt="message.user.email" class="avatar">-->
+          <div class="message-wrapper">
+            <p class="message-header">
+              <!--<span class="username font-600">{{ message.user.email }}</span>-->
+              <!--<span class="sent-date font-300">{{ formattedDate }}</span>-->
+            </p>
+            <p class="message-content font-300">{{ message.text }}</p>
+          </div>
+        </div>
+        
+      </div>
+
+
+      <form class="message-form" v-on:submit.prevent="onSubmit(msgInput)">
+        <input v-model="msgInput" class="form-control" />
+      </form>
+
     </div>
   </div>
 </template>
@@ -20,12 +45,56 @@
   
   export default {
     name: 'app-chat',
+    methods: {
+      onSubmit(input) {
+        this.$feathers.service('messages').create({ text: input })
+      }
+    },
+    computed: {
+      messageList: function() {
+        return this.$store.getters['message/list']
+      },
+      userList: function () {
+        return this.$store.getters['user/list']
+      }
+    },
+    data() {
+      return {
+        msgInput: '',
+        messages: []
+      }
+    },
 
     async mounted() {
-      await this.$feathers.authenticate()
-      const response = await this.$store.dispatch('users/find')
-      // const response = await this.$feathers.service('users').find()
-      console.log(response)
+      await this.$store.dispatch('auth/authenticate')
+      await this.$store.dispatch('user/find')
+      await this.$store.dispatch('message/find')
+      // message.subscribe(response => {
+      //   this.messages = response
+      // })
+      // console.log(messageResponse)
+      // this.$feathers.service('messages').find()
+      //   .subscribe(response => {
+      //     console.log('setFind', response)
+      //   })
     }
   }
 </script>
+
+<style scoped>
+  .users-list {
+    overflow-y: scroll;
+    height: 100vh;
+  }
+  
+  .messages-list {
+    overflow-y: scroll;
+    height: 100vh;
+  }
+  .message-form {
+    border: 2px red solid;
+    /*position: fixed;*/
+    /*top: 0;*/
+  }
+
+</style>

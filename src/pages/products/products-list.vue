@@ -48,7 +48,7 @@
       },
 
       addToCart(product) {
-        this.$store.dispatch('addToCart', product)
+        this.$store.dispatch('product/addToCart', product)
           .then(response => {
             // this.toastrMessage = response
             // this.showToast = true
@@ -62,7 +62,7 @@
     },
     computed: {
       products() {
-        return this.$store.getters.productPhones
+        return this.$store.getters['product/productPhones']
       }
     }
   }

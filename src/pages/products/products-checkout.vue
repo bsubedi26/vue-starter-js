@@ -62,25 +62,25 @@ export default {
 
   computed: {
     totalQuantity() {
-      return this.$store.getters.totalQuantity
+      return this.$store.getters['product/totalQuantity']
     },
     totalPrice() {
-      return this.$store.getters.totalPrice
+      return this.$store.getters['product/totalPrice']
     },
     cart() {
-      return this.$store.getters.cart
+      return this.$store.getters['product/cart']
     },
   },
 
   methods: {
     quantityIncrement(product) {
-      this.$store.dispatch('quantityIncrement', product)
+      this.$store.dispatch('product/quantityIncrement', product)
     },
     quantityDecrement(product) {
-      this.$store.dispatch('quantityDecrement', product)
+      this.$store.dispatch('product/quantityDecrement', product)
     },
     removeFromCart(product) {
-      this.$store.dispatch('removeFromCart', product)
+      this.$store.dispatch('product/removeFromCart', product)
     }
   }
 }

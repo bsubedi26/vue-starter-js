@@ -1,12 +1,32 @@
-import helpers from '@/config/helpers';
-import actions from './auth.actions';
-import mutations from './auth.mutations';
-import * as getters from './auth.getters';
-import state from './auth.state';
+// auth module
 
-export default {
-  state,
-  actions,
-  mutations,
-  getters
+import setupMutations from './mutations'
+import setupActions from './actions'
+import * as getters from './getters'
+import state from './state'
+import feathers from '@/config/feathers'
+
+export default function setupAuthModule (store) {
+
+  const options = {
+    idField: '_id',
+    auth: {
+      namespace: 'auth',
+      userService: '/users'
+    }
+  }
+
+  const { auth } = options
+  const { namespace } = auth
+
+  const mutations = setupMutations(feathers, options)
+  const actions = setupActions(feathers, options)
+  
+  store.registerModule(namespace, {
+    namespaced: true,
+    state,
+    mutations,
+    actions,
+    getters
+  })
 }
