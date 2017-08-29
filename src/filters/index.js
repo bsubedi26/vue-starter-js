@@ -1,5 +1,7 @@
 import numberToString from './numberToString';
+import formatDate from './formatDate';
 
 export { 
-  numberToString
+  numberToString,
+  formatDate
 }

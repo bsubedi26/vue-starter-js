@@ -35,6 +35,7 @@
           { id: 3, name: 'Login', path: '/login' },
           { id: 4, name: 'Signup', path: '/signup' },      
           { id: 5, name: 'Products', path: '/products' },
+          { id: 6, name: 'Chat', path: '/chat' },      
         ],
         authLinks: [
           { id: 1, name: 'Home', path: '/' },
@@ -43,6 +44,7 @@
           { id: 4, name: 'Settings', path: '/account' },
           { id: 5, name: 'Login', path: '/login' },
           { id: 6, name: 'Signup', path: '/signup' },      
+          { id: 7, name: 'Chat', path: '/chat' },      
         
         ],
       };

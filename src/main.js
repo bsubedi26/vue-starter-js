@@ -26,6 +26,7 @@ Vue.component('icon', elIcon);
 // ****GLOBAL FILTERS****
 import * as filters from './filters'
 Vue.filter('numberToString', filters.numberToString)
+Vue.filter('formatDate', filters.formatDate)
 
 
 // ****GLOBAL PLUGINS****
