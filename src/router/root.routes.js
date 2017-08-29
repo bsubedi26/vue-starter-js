@@ -1,4 +1,4 @@
-import Home from '@/pages/Home'
+import Home from '@/pages/home/Home'
 import Login from '@/pages/login/Login'
 import Signup from '@/pages/signup/Signup'
 import Forum from '@/pages/forum/Forum'

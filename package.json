@@ -19,6 +19,7 @@
     "feathers-hooks": "^2.0.2",
     "feathers-rest": "^1.8.0",
     "feathers-socketio": "^2.0.0",
+    "feathers-vuex": "^1.0.0-pre.3",
     "idle-vue": "^2.0.1",
     "mint-ui": "^2.2.9",
     "socket.io-client": "^2.0.3",

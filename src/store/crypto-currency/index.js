@@ -1,7 +1,7 @@
-import * as getters from './crypto-currency.getters'
-import actions from './crypto-currency.actions'
-import mutations from './crypto-currency.mutations'
-import state from './crypto-currency.state'
+import * as getters from './getters'
+import actions from './actions'
+import mutations from './mutations'
+import state from './state'
 
 export default {
   state,

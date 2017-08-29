@@ -34,7 +34,7 @@
 
         </el-form-item>
         
-        <el-button :loading="loading" style="width:222px;" type="primary" size="large" @click="handleSubmit(loginForm)">Submit</el-button>
+        <el-button :loading="$isLoading('auth/authenticate')" style="width:222px;" type="primary" size="large" @click="handleSubmit(loginForm)">Submit</el-button>
 
       </el-form>
     </el-card>
@@ -72,22 +72,22 @@ export default {
     handleSubmit(form) {
       const { email, password, remember } = form
       // const loader = this.$loading({ text: 'Loading...', target: "form" })
-      this.loading = true
-      this.$feathers.authenticate({
+      this.$startLoading('auth/authenticate')
+      this.$store.dispatch('auth/authenticate', {
         strategy: 'local',
         email: email,
         password: password
       })
-      .then((res) => {
-        console.log('.then ', res)
-        this.$store.dispatch('loginSuccess', res)
-        this.loading = false
+      .then((response) => {
+        console.log('.then ', response)
+        this.$endLoading('auth/authenticate')
         this.$router.push("/account")
       })
-      .catch((err) => {
-        console.log('.catch ', err)
-        this.serviceError = err
-        this.loading = false
+      .catch((error) => {
+        console.log('.catch ', error)
+        this.serviceError = error
+        this.$endLoading('auth/authenticate')
+        
       });
     }
   },

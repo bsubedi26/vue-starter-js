@@ -68,10 +68,11 @@ export default {
     handleSubmit(form) {
       const { email, password } = form
       this.loading = true
-      this.$feathers.service('users').create({
-        email: email,
-        password: password
-      })
+      this.$store.dispatch('users/create', { email, password })
+      // this.$feathers.service('users').create({
+      //   email: email,
+      //   password: password
+      // })
       .then((doc) => {
         console.log('.then ', doc)
         this.loading = false

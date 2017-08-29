@@ -55,14 +55,14 @@
         // console.log(key, keyPath);
       },
       handleLogout() {
-        this.$feathers.logout()
-        this.$store.dispatch('logout').then(() => this.$router.push('/login'))
+        // this.$feathers.logout()
+        this.$store.dispatch('auth/logout').then(() => this.$router.push('/login'))
       },
   
     },
     computed: {
       isLoggedIn() {
-        return this.$store.getters.isLoggedIn
+        return this.$store.getters['auth/accessToken']
       },
     },
   }
