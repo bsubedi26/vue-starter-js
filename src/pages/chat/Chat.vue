@@ -7,7 +7,7 @@
           <!--<h4 class="card-title">************</h4>-->
 
           <div class="row p-3">
-            <img :src="user.avatar" width="100" height="100" />
+            <img :src="user.avatar" width="70" height="70" />
             <p class="card-text ml-3">Email: {{ user.email }}</p>
           </div>
   
@@ -55,7 +55,7 @@
         return this.$store.getters['message/list']
       },
       userList: function () {
-        return this.$store.getters['user/list']
+        return this.$store.getters['users/list']
       }
     },
     data() {
@@ -67,7 +67,7 @@
 
     async mounted() {
       await this.$store.dispatch('auth/authenticate')
-      await this.$store.dispatch('user/find')
+      await this.$store.dispatch('users/find')
       await this.$store.dispatch('message/find')
       // message.subscribe(response => {
       //   this.messages = response

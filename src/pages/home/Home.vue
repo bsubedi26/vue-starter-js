@@ -13,7 +13,9 @@
 
     </div>
 
-    <div class="jumbotron"></div>
+    <div class="jumbotron">
+      {{ user }}
+    </div>
   </div>
 
 </template>
@@ -31,10 +33,12 @@ export default {
 
   
   computed: {
-
+    user() {
+      return this.$store.getters['auth/user']
+    }
   },
   mounted() {
-    // this.$store.dispatch('message/find')
+    // this.$store.dispatch('todo/find')
     // .then(res => {
     //  console.log(res)
     // })

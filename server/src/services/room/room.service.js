@@ -1,8 +1,8 @@
 // Initializes the `rooms` service on path `/rooms`
 const createService = require('feathers-mongoose');
-const createModel = require('../../models/rooms.model');
-const hooks = require('./rooms.hooks');
-const filters = require('./rooms.filters');
+const createModel = require('../../models/room.model');
+const hooks = require('./room.hooks');
+const filters = require('./room.filters');
 
 module.exports = function () {
   const app = this;

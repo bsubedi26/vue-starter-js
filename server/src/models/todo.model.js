@@ -11,5 +11,5 @@ module.exports = function (app) {
     updatedAt: { type: Date, default: Date.now }
   });
 
-  return mongooseClient.model('todos', todos);
+  return mongooseClient.model('Todo', todos);
 };

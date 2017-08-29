@@ -1,6 +1,6 @@
 const state = {
   list: [],
-  payload: undefined
+  error: {}
 }
 
 export default state

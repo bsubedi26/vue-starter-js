@@ -19,7 +19,7 @@
     "feathers-reactive": "^0.4.1",
     "feathers-rest": "^1.8.0",
     "feathers-socketio": "^2.0.0",
-    "feathers-vuex": "^0.8.0",
+    "feathers-vuex": "^1.0.0-pre.3",
     "mint-ui": "^2.2.9",
     "popper": "^1.0.0",
     "rxjs": "^5.4.3",

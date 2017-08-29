@@ -57,8 +57,8 @@ export default {
   methods: {
     handleSubmit(email, password) {
       this.$startLoading('users/create')
-      this.$feathers.service('users').create({ email, password })
-      // this.$store.dispatch("users/create", { email, password })
+      // this.$feathers.service('users').create({ email, password })
+      this.$store.dispatch("users/create", { email, password })
       .then((doc) => {
         this.$endLoading('users/create')
         this.$router.push("/login")
