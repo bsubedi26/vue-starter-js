@@ -9,7 +9,7 @@ const routes = [
     path: '/chat',
     component: Chat,
     meta: {
-      requiresAuth: true
+      // requiresAuth: true
     }
   },
   {

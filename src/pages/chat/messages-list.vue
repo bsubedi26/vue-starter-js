@@ -1,5 +1,5 @@
 <template>
-  <div class="messages-list">
+  <div class="messages-list box-card">
     <div v-for="message in messages" :key="message._id">
       <span><em>[{{ message.userEmail }} || {{ message.createdAt | formatDate }}]:</em> {{ message.text }}</span>
     </div>
@@ -7,9 +7,12 @@
 </template>
 
 <script>
+
   export default {
     name: 'app-chat-messages-list',
-    props: ['messages']
+    props: {
+      messages: Array
+    },
   }
 </script>
 

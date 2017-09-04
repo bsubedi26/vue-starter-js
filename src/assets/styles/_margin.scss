@@ -1,0 +1,22 @@
+// Examples:
+// no-margin-bottom, no-padding-left, margin-top-5, padding-left-20, etc
+$directions: ('top' 'bottom' 'left' 'right');
+$properties: ('margin' 'padding');
+
+
+@each $direction in $directions {
+  @each $property in $properties {
+
+    .no-#{$property}-#{$direction} {
+      #{$property}-#{$direction}: 0 !important;
+    }
+
+    @for $i from 1 through 10 {
+      $value: $i * 5;
+
+      .#{$property}-#{$direction}-#{$value} {
+        #{$property}-#{$direction}: #{$value}px !important;
+      }
+    }
+  }
+}

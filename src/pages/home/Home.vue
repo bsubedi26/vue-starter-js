@@ -69,7 +69,7 @@ export default {
       return this.$store.getters.cryptoCurrencies
     }
   },
-  created() {
+  mounted() {
     // this.$store.dispatch('getCryptoCurrencies')
   }
 }

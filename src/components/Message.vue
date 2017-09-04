@@ -15,6 +15,13 @@
             duration: 2500
           });
         }
+        case 'authError': {
+          return Message.error({
+            showClose: true,
+            message: 'You must be authenticated first.',
+            duration: 2500
+          });
+        }
       }
       
     }

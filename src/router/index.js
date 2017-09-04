@@ -6,6 +6,7 @@ import rootRoutes from './root.routes'
 import accountRoutes from './account.routes'
 import productRoutes from './products.routes'
 
+
 Vue.use(Router)
 
 const router = new Router({

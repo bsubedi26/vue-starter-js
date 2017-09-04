@@ -81,7 +81,7 @@ export default {
       .then((response) => {
         console.log('.then ', response)
         this.$endLoading('auth/authenticate')
-        this.$router.push("/account")
+        this.$router.push("/account/settings")
       })
       .catch((error) => {
         console.log('.catch ', error)

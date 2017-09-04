@@ -23,7 +23,7 @@ const app = feathers();
 
 // Load app configuration
 app.configure(configuration(path.join(__dirname, '..')));
-// Enable CORS, security, compression, favicon and body parsing
+// Enable CORS, security,compression, favicon and body parsing
 app.use(cors());
 app.use(helmet());
 app.use(compress());
