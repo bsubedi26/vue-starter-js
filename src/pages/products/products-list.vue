@@ -42,8 +42,6 @@
 </template>
 
 <script>
-import { Message } from 'element-ui'
-
   export default {
     name: 'products-list',
     data() {

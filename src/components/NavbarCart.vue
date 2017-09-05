@@ -66,7 +66,6 @@ export default {
 
   methods: {
     handleCartClick() {
-      console.log('cl')
       // this.showCart = !this.showCart
       this.$router.push('/products/checkout')
     }
