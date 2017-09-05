@@ -10,7 +10,6 @@ const app = feathers();
 // const restClient = rest('http://localhost:3030')
 const socket = io('http://localhost:3030');
 
-
 app
   .configure(fHooks())
   // .configure(restClient.axios(axios))

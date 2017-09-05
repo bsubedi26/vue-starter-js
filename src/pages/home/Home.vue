@@ -1,7 +1,7 @@
 <template>
   
   <div class="home">
-    <modal />
+    <!-- <modal /> -->
 
     <el-row type="flex" class="row-bg">
       <el-col :span="6"><div class="grid-content bg-purple"></div></el-col>

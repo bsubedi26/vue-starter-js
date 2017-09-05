@@ -1,27 +1,25 @@
 import axios from 'axios';
 
+
 export default function makeAuthActions (feathers, options) {
+  const userService = feathers.service('users')
   const { auth } = options
 
 
   const actions = {
 
     async deleteAccount(store, _id) {
-      const response = await feathers.service('users').remove(_id)
+      console.log('delete id ', _id)
+      // WARNING: remove(undefined) deletes ALL documents
+      const response = await userService.remove(_id)
       store.dispatch('logout')
       return Promise.resolve(response)
     },
     async changePassword (store, credentials) {
-      const userService = feathers.service('users')
       const { email, oldpass, newPassword, _id } = credentials
-      console.log('cred', credentials)
-      const results = await axios.post('localhost:3030/verify-user-credentials', { _id, email, password: oldpass })
-      // const results = await userService.find({ query: { email, password: oldpass }})
-      // const results = await feathers.authenticate({ strategy: 'local', email: email, password: 'XZXCCXD' })
-      console.log('ressefef',results)
-      const result = await userService.update(_id, { email: email, password: newPassword })
-      console.log('res' ,result)
-      return Promise.resolve(result)
+      console.log('input credentials ', credentials)
+      const results = await userService.patch(_id, { oldpass: oldpass, password: newPassword })
+      return Promise.resolve(results)
     },
     authenticate (store, data) {
       const { commit, state, dispatch } = store

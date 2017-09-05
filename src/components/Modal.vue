@@ -3,14 +3,17 @@
     <el-button @click="dialogVisible = true">click to open the Dialog</el-button>
 
     <el-dialog
-      title="Tips"
+      title="Modal Message"
       :visible.sync="dialogVisible"
       size="tiny"
-      :before-close="handleClose">
-      <span>This is a message</span>
+      :before-close="handleClose"
+      :close-on-click-modal="false"
+      :show-close="false">
+      <span>Hello there!</span>
+
       <span slot="footer" class="dialog-footer">
-        <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>
+      <el-button @click="dialogVisible = false">Cancel</el-button>
+        <el-button type="primary" @click="dialogVisible = false">Confirm</el-button>        
       </span>
     </el-dialog>
   </div>    

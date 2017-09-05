@@ -1,11 +1,17 @@
+import { Message } from 'element-ui'
+
 const actions = {
   addToCart({ dispatch, commit }, product) {
     return new Promise(resolve => {
       commit('ADD_TO_CART', product)
+      Message({
+        showClose: true,
+        message: 'Successfully added product to cart.',
+        type: 'success'
+      });
       resolve('Successfully added to the cart!');
     });
   },
-
   clearCart({ commit }) {
     return new Promise(resolve => {
       commit('CLEAR_CART')

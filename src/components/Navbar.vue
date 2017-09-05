@@ -1,10 +1,18 @@
 <template>
-  <div>
-        
+  <div class="navbar-container">
+     
     <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" v-if="!isLoggedIn">
       <el-menu-item @click="handleNavigationClick(navigationLink.path)" :index="navigationLink.id | numberToString" v-for="navigationLink in guestLinks" :key="navigationLink.name">
         {{ navigationLink.name }}
       </el-menu-item>
+
+
+        
+      <el-menu-item index="navbar-cart">
+        <navbar-cart></navbar-cart>
+      </el-menu-item>
+
+      
     </el-menu>
 
             
@@ -18,35 +26,37 @@
       </el-menu-item>
 
     </el-menu>
+     
+      <!-- <el-col :span="8">
+        <h5>Groups</h5>
+        <el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo">
+          <el-menu-item-group title="Group One">
+            <el-menu-item index="1"><i class="el-icon-message"></i>Navigator One</el-menu-item>
+            <el-menu-item index="2"><i class="el-icon-message"></i>Navigator Two</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group title="Group Two">
+            <el-menu-item index="3"><i class="el-icon-message"></i>Navigator Three</el-menu-item>
+            <el-menu-item index="4"><i class="el-icon-message"></i>Navigator Four</el-menu-item>
+          </el-menu-item-group>
+        </el-menu>
+      </el-col> -->
+    
 
   </div>
 </template>
 <script>
-  import NavbarCart from './NavbarCart';
+  import NavbarCart from './NavbarCart.vue';
+  import NavigationLinksMixin from '../mixins/NavigationLinks.vue';
 
   export default {
-    name: 'Navbar',
+    name: 'top-navbar',
+    mixins: [NavigationLinksMixin],
+    components: {
+      NavbarCart
+    },
     data() {
       return {
-        activeIndex: '1',
-        guestLinks: [
-          { id: 1, name: 'Home', path: '/' },
-          { id: 2, name: 'Forum', path: '/forum' },
-          { id: 3, name: 'Login', path: '/login' },
-          { id: 4, name: 'Signup', path: '/signup' },      
-          { id: 5, name: 'Products', path: '/products' },
-          { id: 6, name: 'Chat', path: '/chat' },      
-        ],
-        authLinks: [
-          { id: 1, name: 'Home', path: '/' },
-          { id: 2, name: 'Forums', path: '/forums' },
-          { id: 3, name: 'Products', path: '/products' },
-          { id: 4, name: 'Settings', path: '/account' },
-          { id: 5, name: 'Login', path: '/login' },
-          { id: 6, name: 'Signup', path: '/signup' },      
-          { id: 7, name: 'Chat', path: '/chat' },      
         
-        ],
       };
     },
     methods: {
@@ -69,4 +79,14 @@
     },
   }
 </script>
+
+<style scoped>
+.navbar-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+</style>
+
 

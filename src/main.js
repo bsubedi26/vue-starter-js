@@ -12,13 +12,15 @@ import 'element-ui/lib/theme-default/index.css'
 
 // ****GLOBAL COMPONENTS****
 import Navbar from './components/Navbar.vue'
+import SideNavbar from './components/SideNavbar.vue'
 import Loader from './components/Loader.vue'
 import elModal from './components/Modal.vue'
 import ErrorDisplayer from './components/ErrorDisplayer.vue'
 import Circle from './components/Circle'
 
 // import elIcon from 'vue-awesome/components/Icon'
-Vue.component('navbar', Navbar);
+Vue.component('top-navbar', Navbar);
+Vue.component('side-navbar', SideNavbar);
 Vue.component('loader', Loader);
 Vue.component('modal', elModal);
 // Vue.component('icon', elIcon);

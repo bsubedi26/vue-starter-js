@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <i class="fa fa-shopping-cart" @click="handleCartClick()">
+  <div @click="handleCartClick()">
+    <i class="fa fa-shopping-cart">
     </i>
     <span class="text-white">{{totalQuantity}} items || </span>
     <span class="text-white">Total: ${{totalPrice}}</span>
@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: 'Navbar',
+  name: 'navbar-cart',
   data() {
     return {
       showCart: false,
@@ -66,6 +66,7 @@ export default {
 
   methods: {
     handleCartClick() {
+      console.log('cl')
       // this.showCart = !this.showCart
       this.$router.push('/products/checkout')
     }

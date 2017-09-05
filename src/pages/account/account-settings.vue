@@ -48,38 +48,20 @@
     },
     methods: {
       async handleChangePasswordSubmit(oldpass, newPassword) {
-
         const credentials = { _id: this.user._id, email: this.user.email, oldpass, newPassword }
-        console.log(credentials)
-        // const response = await this.$store.dispatch('auth/authenticate', credentials)
         const response = await this.$store.dispatch('auth/changePassword', credentials)
-        console.log(response)
-        // await this.$store.dispatch('users/update', this.userId, { password: newpass })
-            // .patch(this.userId, { password: newpass })
-            // .then(res => console.log('res ', res))
-            // .catch(res => console.log('res ', res))
-          // .catch(response => {
-          //   console.log('.catch ', response)
-          //   this.serviceError = 'There was an issue. Try again.'
-          // })
       },
       async handleDeleteAccountSubmit() {
-        
         try {
-          const response = await this.$store.dispatch('auth/deleteAccount', this.userId)
+          const response = await this.$store.dispatch('auth/deleteAccount', this.user._id)
           // this.$store.dispatch('deleteAccountSuccess')
           this.$router.push('/login')
-      
         } catch (err) {
           console.log(err)
         }
-        
       }
     },
     computed: {
-      userId() {
-        return this.$store.getters.userId
-      },
       user() {
         return this.$store.getters['auth/user']
       }

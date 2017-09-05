@@ -11,7 +11,7 @@ $properties: ('margin' 'padding');
       #{$property}-#{$direction}: 0 !important;
     }
 
-    @for $i from 1 through 10 {
+    @for $i from 1 through 20 {
       $value: $i * 5;
 
       .#{$property}-#{$direction}-#{$value} {
