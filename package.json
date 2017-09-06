@@ -1,0 +1,58 @@
+{
+  "private": true,
+  "name": "vue-vue",
+  "productName": "vue-vue",
+  "description": "vue-vue",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "poi",
+    "build": "poi build",
+    "report": "poi build --bundle-report",
+    "serve": "serve dist --single"
+  },
+  "babel": {
+    "presets": [
+      [
+        "vue-app",
+        {
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
+  "author": {
+    "name": "bsubedi26",
+    "email": "bsubedi26@gmail.com"
+  },
+  "dependencies": {
+    "axios": "^0.16.2",
+    "bootstrap": "^4.0.0-alpha.6",
+    "element-ui": "^1.4.4",
+    "feathers": "^2.2.0",
+    "feathers-authentication-client": "^0.3.3",
+    "feathers-hooks": "^2.0.2",
+    "feathers-rest": "^1.8.0",
+    "feathers-socketio": "^2.0.0",
+    "feathers-vuex": "^1.0.0-pre.3",
+    "idle-vue": "^2.0.3",
+    "mint-ui": "^2.2.9",
+    "moment": "^2.18.1",
+    "normalize.css": "^7.0.0",
+    "object-assign": "^4.1.1",
+    "promise-polyfill": "^6.0.2",
+    "socket.io-client": "^2.0.3",
+    "vue-awesome": "^2.3.3",
+    "vue-router": "^2.7.0",
+    "vuex": "^2.4.0",
+    "vuex-loading": "^0.1.13",
+    "vuex-persistedstate": "^2.0.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.5.3",
+    "poi": "^9.0.0",
+    "poi-preset-bundle-report": "^2.0.0",
+    "sass-loader": "^6.0.6",
+    "serve": "^3.1.0"
+  }
+}

@@ -1,0 +1,20 @@
+$colors: (
+  white: #000000,
+  black: #000000,
+  lightGray: #ccd3ea,
+  darkBlue: #182244,
+  lightRed: #E26872
+);
+
+.bor {
+  border: 3px red solid;
+}
+
+@each $name, $color in $colors {
+  .bg-#{$name} {
+    background-color: #{$color};
+  }
+  .font-#{$name} {
+    color: #{$color};
+  }
+}
