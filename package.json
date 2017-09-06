@@ -7,6 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "poi",
+    "start": "poi",
     "build": "poi build",
     "report": "poi build --bundle-report",
     "serve": "serve dist --single"

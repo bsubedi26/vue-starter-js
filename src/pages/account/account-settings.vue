@@ -9,17 +9,17 @@
     
      <form @submit.prevent="handleChangePasswordSubmit(oldpass, newpass)" novalidate>
 
-        <fieldset :class="{ 'has-danger': errors.has('oldpass') }">
-          <input v-model="oldpass" v-validate="{ rules: { required: true } }" :class="{'form-control-danger': errors.has('oldpass') }" class="form-control" type="password" name="oldpass" placeholder="Old Password"></input>
+        <fieldset :class="{ 'has-danger': false }">
+          <input v-model="oldpass" :class="{'form-control-danger': false }" class="form-control" type="password" name="oldpass" placeholder="Old Password"></input>
         </fieldset>
-        <span v-show="errors.has('oldpass')" class="float-left text-danger">{{ errors.first('oldpass') }}</span>
+        <span v-show="false" class="float-left text-danger">{{ false }}</span>
         <hr />
-        <fieldset :class="{ 'has-danger': errors.has('newpass') }">
-          <input v-model="newpass" v-validate="{ rules: { required: true } }" :class="{'form-control-danger': errors.has('newpass') }" class="form-control" type="password" name="newpass" placeholder="New Password"></input>
+        <fieldset :class="{ 'has-danger': false }">
+          <input v-model="newpass" :class="{'form-control-danger': false }" class="form-control" type="password" name="newpass" placeholder="New Password"></input>
         </fieldset>
-        <span v-show="errors.has('newpass')" class="float-left text-danger">{{ errors.first('newpass') }}</span>
+        <span v-show="false" class="float-left text-danger">{{ false }}</span>
         <hr />
-        <button :disabled="errors.any()" type="submit" class="btn btn-primary btn-inline">Change Password</button>
+        <button :disabled="false" type="submit" class="btn btn-primary btn-inline">Change Password</button>
       </form>
 
       <div class="mt-5">
@@ -27,7 +27,7 @@
         <hr />
         <p class="text-danger">Warning! Proceed with caution. Once you delete your account, there is no going back.</p>
         <button @click="handleDeleteAccountSubmit()" type="submit" class="btn btn-outline-danger btn-inline">Delete your account</button>
-    </div>
+      </div>
 
   </div>
 

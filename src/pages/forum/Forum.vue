@@ -57,34 +57,37 @@
 
       },
       handleSubmit(newCategory) {
-        this.$feathers.service('forum-categories').create({
-          "name": newCategory,
-          "author": "author_1",
-          "category": "category_1",
-          "description": "description_1"
-        })
+        // const payload = {
+        //   "name": newCategory,
+        //   "author": "author_1",
+        //   "category": "category_1",
+        //   "description": "description_1"
+        // }
+        // this.$store.dispatch('forum-categories/create', payload)
       },
       delay(t) {
         return new Promise(resolve => setTimeout(resolve, t))
       }
     },
     async mounted() {
-      try {
-        this.$startLoading('forum/find')
-        await this.delay(3000)
-        const categories = await this.$feathers.service('forum-categories').find()
-        this.forumCategories = categories.data
-        this.$endLoading('forum/find')
-      } catch (err) {
-        console.log(err)
-        this.serviceError = err
-        this.$endLoading('forum/find')
-      }
+      // try {
+      //   this.$startLoading('forum/find')
+      //   await this.delay(3000)
+      //   const categories = await this.$store.dispatch('forum-categories/find')
+        
+      //   const categories = await this.$feathers.service('forum-categories').find()
+      //   this.forumCategories = categories.data
+      //   this.$endLoading('forum/find')
+      // } catch (err) {
+      //   console.log(err)
+      //   this.serviceError = err
+      //   this.$endLoading('forum/find')
+      // }
 
-      this.$feathers.service('forum-categories').on('created', (data) => {
-        console.log('data ',data)
-        this.forumCategories.push(data)
-      })
+      // this.$feathers.service('forum-categories').on('created', (data) => {
+      //   console.log('data ',data)
+      //   this.forumCategories.push(data)
+      // })
       
     }
   }

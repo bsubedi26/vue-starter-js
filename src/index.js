@@ -27,7 +27,6 @@ Vue.component('modal', elModal);
 Vue.component('app-circle', Circle);
 Vue.component('icon', Icon)
 
-
 // ****GLOBAL FILTERS****
 import * as filters from './filters'
 Vue.filter('numberToString', filters.numberToString)
@@ -35,36 +34,17 @@ Vue.filter('formatDate', filters.formatDate)
 
 
 // ****GLOBAL PLUGINS****
-// import BootstrapVue from 'bootstrap-vue'
 import ElementUI from 'element-ui'
-import MintUI from 'mint-ui'
-import 'mint-ui/lib/style.css'
-// import VeeValidate, { Validator } from 'vee-validate'
+// import MintUI from 'mint-ui'
+// import 'mint-ui/lib/style.css'
 
-// Vue.use(BootstrapVue)
 Vue.use(ElementUI)
-Vue.use(MintUI)
-// Vue.use(VeeValidate, {
-//   errorBagName: 'errors', 
-//   fieldsBagName: 'inputs', // property conflicts: DEFAULT was fields
-// })
-
+// Vue.use(MintUI)
 
 // ****GLOBAL CONFIG****
 // import feathers from '@/config/feathers'
 // import stylings from '@/config/stylings'
-// import dictionary from '@/config/validate-rules'
-// Validator.updateDictionary(dictionary)
 // Vue.prototype.$feathers = feathers
-
-
-// new Vue({
-//   el: '#app',
-//   router,
-//   store,
-//   template: '<App/>',
-//   components: { App },
-// })
 
 
 new Vue({

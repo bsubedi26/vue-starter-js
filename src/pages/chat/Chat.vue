@@ -57,7 +57,6 @@
 <script>
 import UserList from './user-list.vue'
 import MessagesList from './messages-list.vue'
-import { Toast, Indicator } from 'mint-ui'
 import { Message } from 'element-ui';
 
 export default {
