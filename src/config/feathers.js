@@ -6,9 +6,18 @@ import fSocketio from 'feathers-socketio/client';
 import * as rest from 'feathers-rest/client';
 import axios from 'axios';
 
+
+function getHost() {
+  const HOST = (process.env.NODE_ENV === 'development') 
+  ? 'http://localhost:3030' 
+  : location.origin.replace(/^http/, 'ws')
+
+  return HOST
+}
+
 const app = feathers();
 // const restClient = rest('http://localhost:3030')
-const socket = io('http://localhost:3030');
+const socket = io(getHost());
 
 app
   .configure(fHooks())

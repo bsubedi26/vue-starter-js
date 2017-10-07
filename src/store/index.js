@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import IdleVue from 'idle-vue'
+// import IdleVue from 'idle-vue'
 import { createVuexLoader } from 'vuex-loading'
 import product from './product'
 import authModule from './auth'
