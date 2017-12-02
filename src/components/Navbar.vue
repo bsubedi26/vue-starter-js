@@ -1,95 +1,92 @@
 <template>
-  <b-navbar toggleable type="light" variant="primary" toggle-breakpoint="md">
-  
-    <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-  
-    <b-navbar-brand href="#">
-      <app-navbar-cart></app-navbar-cart>
-    </b-navbar-brand>
-  
-    <b-collapse is-nav id="nav_collapse">
-  
-      <b-nav is-nav-bar v-if="!isLoggedIn">
-        <b-nav-item v-for="navigationLink in guestLinks" :key="navigationLink.name">
-          <router-link  class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
-        </b-nav-item>
-      </b-nav>
+  <div class="navbar-container">
+     
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" v-if="!isLoggedIn">
+      <el-menu-item @click="handleNavigationClick(navigationLink.path)" :index="navigationLink.id | numberToString" v-for="navigationLink in guestLinks" :key="navigationLink.name">
+        {{ navigationLink.name }}
+      </el-menu-item>
 
-      <b-nav is-nav-bar v-if="isLoggedIn">
-        <b-nav-item v-for="navigationLink in authLinks" :key="navigationLink.name">
-          <router-link  class="text-white" :to="navigationLink.path">{{ navigationLink.name }}</router-link>
-        </b-nav-item>
-      </b-nav>
-
-  
-      <!-- Right aligned nav items -->
-      <b-nav is-nav-bar class="ml-auto">
-  
-        <b-nav-item-dropdown right>
-          <!-- Using button-content slot -->
-          <template slot="button-content">
-            <span class="text-white"></span>
-          </template>
 
         
-          <b-dropdown-item v-if="!isLoggedIn" to="/login">Login</b-dropdown-item>
-          <b-dropdown-item v-if="!isLoggedIn" to="/signup">Signup</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" to="/account">Account Settings</b-dropdown-item>
-          <b-dropdown-item v-if="isLoggedIn" @click="handleLogout()">
-            Logout!
-          </b-dropdown-item>
-          
-        </b-nav-item-dropdown>
-      </b-nav>
-  
-    </b-collapse>
-  </b-navbar>
+      <el-menu-item index="navbar-cart">
+        <navbar-cart></navbar-cart>
+      </el-menu-item>
 
+      
+    </el-menu>
 
+            
+    <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect" v-if="isLoggedIn">
+      <el-menu-item @click="handleNavigationClick(navigationLink.path)" :index="navigationLink.id | numberToString" v-for="navigationLink in authLinks" :key="navigationLink.name">
+        {{ navigationLink.name }}
+      </el-menu-item>
+
+      <el-menu-item index="logout" @click="handleLogout()">
+        Logout
+      </el-menu-item>
+
+    </el-menu>
+     
+      <!-- <el-col :span="8">
+        <h5>Groups</h5>
+        <el-menu mode="vertical" default-active="1" class="el-menu-vertical-demo">
+          <el-menu-item-group title="Group One">
+            <el-menu-item index="1"><i class="el-icon-message"></i>Navigator One</el-menu-item>
+            <el-menu-item index="2"><i class="el-icon-message"></i>Navigator Two</el-menu-item>
+          </el-menu-item-group>
+          <el-menu-item-group title="Group Two">
+            <el-menu-item index="3"><i class="el-icon-message"></i>Navigator Three</el-menu-item>
+            <el-menu-item index="4"><i class="el-icon-message"></i>Navigator Four</el-menu-item>
+          </el-menu-item-group>
+        </el-menu>
+      </el-col> -->
+    
+
+  </div>
 </template>
-
 <script>
-  import NavbarCart from './NavbarCart';
+  import NavbarCart from './NavbarCart.vue';
+  import NavigationLinksMixin from '../mixins/NavigationLinks.vue';
 
   export default {
-    name: 'Navbar',
+    name: 'top-navbar',
+    mixins: [NavigationLinksMixin],
     components: {
-      'app-navbar-cart': NavbarCart
+      NavbarCart
     },
     data() {
       return {
-        showCart: false,
-        guestLinks: [
-          { name: 'Home', path: '/' },
-          { name: 'Login', path: '/login' },
-          { name: 'Signup', path: '/signup' },
-          { name: 'Products', path: '/products' },
-        ],
-        authLinks: [
-          { name: 'Home', path: '/' },
-          { name: 'Products', path: '/products' },
-          { name: 'Settings', path: '/account' },
-          { name: 'Cart', path: '/products/cart' },
         
-        ],
-      }
+      };
     },
-
+    methods: {
+      handleNavigationClick(path) {
+        this.$router.push(path)
+      },
+      handleSelect(key, keyPath) {
+        // console.log(key, keyPath);
+      },
+      handleLogout() {
+        // this.$feathers.logout()
+        this.$store.dispatch('auth/logout').then(() => this.$router.push('/signup'))
+      },
+  
+    },
     computed: {
       isLoggedIn() {
-        return this.$store.getters.isLoggedIn
+        return this.$store.getters['auth/accessToken']
       },
     },
-
-    methods: {
-      handleLogout() {
-        this.$feathers.logout()
-        this.$store.dispatch('logout').then(() =>this.$router.push('/login'))
-      },
-    }
   }
 </script>
 
 <style scoped>
-
+.navbar-container {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
 </style>
+
+

@@ -2,30 +2,23 @@
 
 const { authenticate } = require('feathers-authentication').hooks;
 const { hashPassword } = require('feathers-authentication-local').hooks;
+const { Verifier } = require('feathers-authentication-local');
 const commonHooks  = require('feathers-hooks-common');
 const gravatar = require('../../hooks/gravatar');
 
-function beforeFindUser() {
-  return hook => {
-    // console.log('beforeFindUser::hook ', hook.params)
-    // console.log('beforeFindUser::hook ', Object.keys(hook))
-
-    return Promise.resolve(hook)
-  }
-}
-
+const { comparePassword}  = require('../../hooks/authentication/compare-password');
 
 module.exports = {
   before: {
     all: [],
     find: [ 
       authenticate('jwt'),
-      beforeFindUser() 
+      hashPassword(),
     ],
     get: [ authenticate('jwt') ],
     create: [hashPassword(), gravatar()],
-    update: [ authenticate('jwt') ],
-    patch: [ authenticate('jwt'), hashPassword() ],
+    update: [ authenticate('jwt'), hashPassword() ],
+    patch: [ authenticate('jwt'), comparePassword(), hashPassword() ],
     remove: [ authenticate('jwt') ]
   },
 

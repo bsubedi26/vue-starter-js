@@ -1,10 +1,10 @@
-import helpers from '@/config/helpers';
-import actions from './user.actions';
-import mutations from './user.mutations';
-import * as getters from './user.getters';
-import state from './user.state';
+import * as getters from './getters'
+import actions from './actions'
+import mutations from './mutations'
+import state from './state'
 
 export default {
+  namespaced: true,
   state,
   actions,
   mutations,

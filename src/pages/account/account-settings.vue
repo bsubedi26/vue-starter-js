@@ -7,7 +7,7 @@
       {{ serviceError }}
     </b-alert>
     
-     <form @submit.prevent="handleSubmit(oldpass, newpass)" novalidate>
+     <form @submit.prevent="handleChangePasswordSubmit(oldpass, newpass)" novalidate>
 
         <fieldset :class="{ 'has-danger': errors.has('oldpass') }">
           <input v-model="oldpass" v-validate="{ rules: { required: true } }" :class="{'form-control-danger': errors.has('oldpass') }" class="form-control" type="password" name="oldpass" placeholder="Old Password"></input>
@@ -26,7 +26,7 @@
         <h3 class="text-left text-danger">Delete Account</h3>
         <hr />
         <p class="text-danger">Warning! Proceed with caution. Once you delete your account, there is no going back.</p>
-        <button @click="handleDeleteAccountClick()" type="submit" class="btn btn-outline-danger btn-inline">Delete your account</button>
+        <button @click="handleDeleteAccountSubmit()" type="submit" class="btn btn-outline-danger btn-inline">Delete your account</button>
     </div>
 
   </div>
@@ -47,39 +47,23 @@
     
     },
     methods: {
-      handleSubmit(oldpass, newpass) {
-        const credentials = { strategy: 'local', email: this.email, password: oldpass }
-        this.$feathers.authenticate(credentials)
-          .then(response => {
-            this.$feathers.service('users')
-            .patch(this.userId, { password: newpass })
-            .then(res => console.log('res ', res))
-            .catch(res => console.log('res ', res))
-          })
-          .catch(response => {
-            console.log('.catch ', response)
-            this.serviceError = 'There was an issue. Try again.'
-          })
+      async handleChangePasswordSubmit(oldpass, newPassword) {
+        const credentials = { _id: this.user._id, email: this.user.email, oldpass, newPassword }
+        const response = await this.$store.dispatch('auth/changePassword', credentials)
       },
-      handleDeleteAccountClick() {
-        this.$feathers.service('users')
-        .remove(this.userId)
-        .then(res => {
-          this.$store.dispatch('deleteAccountSuccess')
-          .then(res => {
-            this.$router.push('/login')
-          })
-          console.log('res ', res)
-        })
-        .catch(res => console.log('res ', res))
+      async handleDeleteAccountSubmit() {
+        try {
+          const response = await this.$store.dispatch('auth/deleteAccount', this.user._id)
+          // this.$store.dispatch('deleteAccountSuccess')
+          this.$router.push('/login')
+        } catch (err) {
+          console.log(err)
+        }
       }
     },
     computed: {
-      userId() {
-        return this.$store.getters.userId
-      },
-      email() {
-        return this.$store.getters.email
+      user() {
+        return this.$store.getters['auth/user']
       }
     }
   }

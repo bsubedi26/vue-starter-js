@@ -11,10 +11,10 @@
       <img width="175" height="175" class="mx-auto mt-3" :src="product.src" />
   
       <p class="products-info-text mt-3">{{product.info}}</p>
-      
-      <button @click="addToCart(product)" class="btn btn-primary mb-3 cursor-pointer">Add to Cart</button>
-      <button @click="goBack()" class="btn btn-outline-success mb-3 cursor-pointer">Go Back</button>
-
+          <el-row type="flex" justify="center" class="margin-bottom-30">
+            <el-button @click="addToCart(product)" type="primary">Add to Cart</el-button>
+            <el-button @click="goBack()" type="info">Go Back</el-button>
+          </el-row>
     </div>
   </div>
   

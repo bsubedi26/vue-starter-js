@@ -1,30 +1,47 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+// import IdleVue from 'idle-vue'
 import { createVuexLoader } from 'vuex-loading'
-import user from './user'
 import product from './product'
-import plugins from './plugins'
+import authModule from './auth'
+import cryptoCurrency from './crypto-currency'
+import fClient from '@/config/feathers'
+import fVuex from 'feathers-vuex'
 
 const VuexLoading = createVuexLoader({
-  // The Vuex module name, 'loading' by default.
   moduleName: 'loading',
-  // The Vue component name, 'v-loading' by default.
   componentName: 'v-loading',
-  // Vue component class name, 'v-loading' by default.
   className: 'v-loading',
 });
 
 Vue.use(Vuex)
 Vue.use(VuexLoading)
 
+const featherVuex = fVuex(fClient, {
+  idField: '_id'
+})
+
 const store = new Vuex.Store({
   modules: {
-    user,
-    product
+    product,
+    // cryptoCurrency
   },
-  plugins: [VuexLoading.Store, createPersistedState(), plugins],
+  plugins: [
+    VuexLoading.Store, 
+    authModule,
+    featherVuex.service('/email'),
+    featherVuex.service('/message'),
+    featherVuex.service('/users'),
+    // createPersistedState()
+  ],
 
 })
+
+// const idleOptions = { 
+//   idleTime: 3000,
+//   store: store
+// }
+// Vue.use(IdleVue, idleOptions)
 
 export default store

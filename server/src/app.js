@@ -10,14 +10,12 @@ const configuration = require('feathers-configuration');
 const hooks = require('feathers-hooks');
 const rest = require('feathers-rest');
 const socketio = require('feathers-socketio');
-const GithubStrategy = require('passport-github').Strategy;
-const oauth2 = require('feathers-authentication-oauth2');
+// const GithubStrategy = require('passport-github').Strategy;
+// const oauth2 = require('feathers-authentication-oauth2');
 
 const middleware = require('./middleware');
 const services = require('./services');
 const appHooks = require('./app.hooks');
-
-// const authentication = require('./services/authentication');
 
 const mongoose = require('./mongoose');
 
@@ -25,7 +23,7 @@ const app = feathers();
 
 // Load app configuration
 app.configure(configuration(path.join(__dirname, '..')));
-// Enable CORS, security, compression, favicon and body parsing
+// Enable CORS, security,compression, favicon and body parsing
 app.use(cors());
 app.use(helmet());
 app.use(compress());
